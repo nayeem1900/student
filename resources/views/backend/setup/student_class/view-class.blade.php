@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Manage Notice</h1>
+                        <h1 class="m-0 text-dark">Manage Student Class</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Logo</li>
+                            <li class="breadcrumb-item active">Class</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -35,9 +35,9 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h3>Notice List
+                                <h3>Student Class List
 
-                                    <a class="btn btn-success float-right btn-sm" href="{{route('notices.add')}}"><i class="fa fa-plus-circle"></i> Add Notice</a>
+                                    <a class="btn btn-success float-right btn-sm" href="{{route('setups.student.class.add')}}"><i class="fa fa-plus-circle"></i> Add Student Class</a>
                                 </h3>
 
                             </div><!-- /.card-header -->
@@ -48,24 +48,24 @@
                                     <thead>
                                     <tr>
                                         <th>SL</th>
-                                        <th>Image</th>
+                                        <th>Class Name</th>
 
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($allData as $key=>$notice)
+                                    @foreach($allData as $key=>$value)
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                            <td><img src="{{(!empty($notice->image))?url('upload/notice_images/'.$notice->image):url('upload/no_img.png')}}" width="120px" height="130px"></td>
+                                            <td>{{($value->name)}}</td>
 
                                             <td>
-                                                <a title="Edit" class="btn btn-sm btn-primary" href="{{route('notices.edit',$notice->id)}}"><i class="fa fa-edit"></i></a>
+                                                <a title="Edit" class="btn btn-sm btn-primary" href="{{route('setups.student.class.edit',$value->id)}}"><i class="fa fa-edit"></i></a>
                                                 {{-- <a title="Delete" class="btn btn-sm btn-danger" href="{{route('users.delete',$user->id)}}"><i class="fa fa-trash"></i></a>--}}
-                                                <a href="#deleteModal{{$notice->id}}" data-toggle="modal" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                                <a href="#deleteModal{{$value->id}}" data-toggle="modal" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
 
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="deleteModal{{$notice->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="deleteModal{{$value->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -75,7 +75,7 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="{{route('notices.delete',$notice->id)}}" method="post">
+                                                                <form action="{{route('setups.student.class.delete',$value->id)}}" method="post">
                                                                     @csrf
                                                                     <button type="submit" class="btn btn-danger" >Permanent Delete</button>
 
@@ -90,7 +90,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
 
 
 

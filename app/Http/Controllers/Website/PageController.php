@@ -13,50 +13,11 @@ class PageController extends Controller
 
     public function index()
     {
-        $data['logo']=Logo::first();
-        $data['sliders']=Slider::all();
 
-        return view('index',$data);
+        return view('auth.login');
 
     }
 
-
-    public function gallery(){
-
-        return view('website.pages.gallery');
-
-    }
-
-
-    public function admissioninfo()
-    {
-
-        return view('website.pages.admission-info');
-
-    }
-
-    public function notice()
-    {
-
-        return view('website.pages.notice');
-
-    }
-
-    public function contact(){
-
-
-        return view('website.pages.contact');
-
-
-    }
-
-
-    public function aboutus()
-    {
-
-        return view('website.pages.aboutus');
-
-    }
 
 
 }

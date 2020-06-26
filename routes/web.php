@@ -63,25 +63,9 @@ Route::group(['prefix'=>'profiles','middleware' => 'auth'], function(){
 });
 
 
-Route::group(['prefix'=>'logos','middleware' => 'auth'], function(){
 
-    Route::get('/view', 'Backend\LogoController@view')->name('logos.view');
-    Route::get('/add', 'Backend\LogoController@add')->name('logos.add');
-    Route::post('/store', 'Backend\LogoController@store')->name('logos.store');
-    Route::get('/edit/{id}', 'Backend\LogoController@edit')->name('logos.edit');
-    Route::post('/update/{id}', 'Backend\LogoController@update')->name('logos.update');
-    Route::post('/delete/{id}', 'Backend\LogoController@delete')->name('logos.delete');
-});
 
-Route::group(['prefix'=>'gallerys','middleware' => 'auth'], function(){
 
-    Route::get('/view', 'Backend\GalleryController@view')->name('gallerys.view');
-    Route::get('/add', 'Backend\GalleryController@add')->name('gallerys.add');
-    Route::post('/store', 'Backend\GalleryController@store')->name('gallerys.store');
-    Route::get('/edit/{id}', 'Backend\GalleryController@edit')->name('gallerys.edit');
-    Route::post('/update/{id}', 'Backend\GalleryController@update')->name('gallerys.update');
-    Route::post('/delete/{id}', 'Backend\GalleryController@delete')->name('gallerys.delete');
-});
 
 Route::group(['prefix'=>'sliders','middleware' => 'auth'], function(){
 
@@ -93,12 +77,12 @@ Route::group(['prefix'=>'sliders','middleware' => 'auth'], function(){
     Route::post('/delete/{id}', 'Backend\SliderController@delete')->name('sliders.delete');
 });
 
-Route::group(['prefix'=>'notices','middleware' => 'auth'], function(){
+Route::group(['prefix'=>'setups','middleware' => 'auth'], function(){
 
-    Route::get('/view', 'Backend\NoticeController@view')->name('notices.view');
-    Route::get('/add', 'Backend\NoticeController@add')->name('notices.add');
-    Route::post('/store', 'Backend\NoticeController@store')->name('notices.store');
-    Route::get('/edit/{id}', 'Backend\NoticeController@edit')->name('notices.edit');
-    Route::post('/update/{id}', 'Backend\NoticeController@update')->name('notices.update');
-    Route::post('/delete/{id}', 'Backend\NoticeController@delete')->name('notices.delete');
+    Route::get('/student/class/view', 'Backend\Setup\StudentClassController@view')->name('setups.student.class.view');
+    Route::get('/student/class/add', 'Backend\Setup\StudentClassController@add')->name('setups.student.class.add');
+    Route::post('/student/class/store', 'Backend\Setup\StudentClassController@store')->name('setups.student.class.store');
+    Route::get('/student/class/edit/{id}', 'Backend\Setup\StudentClassController@edit')->name('setups.student.class.edit');
+    Route::post('/student/class/update/{id}', 'Backend\Setup\StudentClassController@update')->name('setups.student.class.update');
+    Route::post('/student/class/delete/{id}', 'Backend\Setup\StudentClassController@delete')->name('setups.student.class.delete');
 });

@@ -54,26 +54,7 @@
 
             </ul>
         </li>
-            <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-copy"></i>
-                    <p>
-                        Manage Logo
-                        <i class="fas fa-angle-left right"></i>
 
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{route('logos.view')}}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>View Logo</p>
-                        </a>
-                    </li>
-
-
-                </ul>
-            </li>
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-copy"></i>
@@ -94,45 +75,29 @@
 
                 </ul>
             </li>
+
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-copy"></i>
                     <p>
-                        Manage Gallery
+                        Manage Setup
                         <i class="fas fa-angle-left right"></i>
 
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{route('gallerys.view')}}" class="nav-link">
+                        <a href="{{route('setups.student.class.view')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>View Gallery</p>
+                            <p>Student Class</p>
                         </a>
                     </li>
 
 
-                </ul>
-            </li>
-            <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-copy"></i>
-                    <p>
-                        Manage Notice
-                        <i class="fas fa-angle-left right"></i>
-
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{route('notices.view')}}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>View Notice</p>
-                        </a>
-                    </li>
 
 
                 </ul>
             </li>
+
     </ul>
 </nav>

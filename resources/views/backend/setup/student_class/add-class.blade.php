@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Manage Logo</h1>
+                        <h1 class="m-0 text-dark">Manage Student Class</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Logo</li>
+                            <li class="breadcrumb-item active">Class</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -35,39 +35,40 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h3>Add Logo
 
-                                    <a class="btn btn-success float-right btn-sm" href="{{route('logos.view')}}"><i class="fa fa-list"></i>Logo List</a>
-                                </h3>
+                                @if(isset($editData))
+                               <h3> Edit Student Class
+                                    @else
+                                    Add Student Class
+                                    @endif
+
+                                    <a class="btn btn-success float-right btn-sm" href="{{route('setups.student.class.view')}}"><i class="fa fa-list"></i>Student Class List</a>
+                               </h3>
+
 
                             </div><!-- /.card-header -->
                             <div class="card-body" >
 
 
 
-                                <form method="POST" action="{{route('logos.store')}}"enctype="multipart/form-data" >
+                                <form method="POST" action="{{(@$editData)?route('setups.student.class.update',$editData->id):route('setups.student.class.store')}}" >
                                     @csrf
 
 
-
                                     <div class="form-group row">
-                                        <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
+                                        <label>Student Class</label>
                                         <div class="col-md-4">
-                                            <input type="file" name="image" class="form-control"id="image">
+                                            <input type="text" name="name" value="{{@$editData->name}}" class="form-control"id="name">
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
-
-                                        <img id="showImage" src="{{url('upload/no_img.png')}}" style="width:150px;height:160px;border:1px solid#000;">
-                                    </div>
-
-
 
 
                                     <div class="form-group row mb-0">
                                         <div class="col-md-4 offset-md-4">
                                             <button type="submit" class="btn btn-primary">
-                                                {{ __('Submit') }}
+
+                                               {{(@$editData)?'Update':'Submit'}}
+
                                             </button>
 
                                         </div>
