@@ -59,6 +59,7 @@
                                         <label>Student Class</label>
                                         <div class="col-md-4">
                                             <input type="text" name="name" value="{{@$editData->name}}" class="form-control"id="name">
+                                            <font style="color:red">{{($errors->has('name'))?($errors->first('name')):''}}</font>
                                         </div>
                                     </div>
 

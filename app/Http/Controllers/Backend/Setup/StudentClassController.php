@@ -43,7 +43,7 @@ class StudentClassController extends Controller
     public function edit($id){
 
         $editData=StudentClass::find($id);
-        return view('setups.student.class.add',compact('editData'));
+        return view('backend.setup.student_class.add-class',compact('editData'));
     }
 
 
@@ -67,22 +67,13 @@ class StudentClassController extends Controller
 
     public function delete($id){
 
-        $slider=StudentClass::find($id);
-
-        if(! is_null($slider)){
-            //if it is parent Brand delete sub Brand
+        $data=StudentClass::find($id);
+        $data->delete();
 
 
-            if (file_exists('public/upload/logo_images/'.$slider->image) AND! empty($slider->image))
-            {
-                unlink('public/upload/logo_images/'.$slider->image);
-            }
-
-            $slider->delete();
-        }
 
         session()->flash('success', 'Logo has deleted Successfully');
-        return redirect()->route('sliders.view');
+        return redirect()->route('setups.student.class.view');
     }
 
 }
