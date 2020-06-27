@@ -85,4 +85,14 @@ Route::group(['prefix'=>'setups','middleware' => 'auth'], function(){
     Route::get('/student/class/edit/{id}', 'Backend\Setup\StudentClassController@edit')->name('setups.student.class.edit');
     Route::post('/student/class/update/{id}', 'Backend\Setup\StudentClassController@update')->name('setups.student.class.update');
     Route::post('/student/class/delete/{id}', 'Backend\Setup\StudentClassController@delete')->name('setups.student.class.delete');
+
+    //Year
+
+    Route::get('/student/year/view', 'Backend\Setup\YearController@view')->name('setups.student.year.view');
+    Route::get('/student/year/add', 'Backend\Setup\YearController@add')->name('setups.student.year.add');
+    Route::post('/student/year/store', 'Backend\Setup\YearController@store')->name('setups.student.year.store');
+    Route::get('/student/year/edit/{id}', 'Backend\Setup\YearController@edit')->name('setups.student.year.edit');
+    Route::post('/student/year/update/{id}', 'Backend\Setup\YearController@update')->name('setups.student.year.update');
+    Route::post('/student/year/delete/{id}', 'Backend\Setup\YearController@delete')->name('setups.student.year.delete');
+
 });
