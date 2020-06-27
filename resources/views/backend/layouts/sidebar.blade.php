@@ -104,6 +104,15 @@
                     </li>
 
                 </ul>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('setups.student.group.view')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>View Group</p>
+                        </a>
+                    </li>
+
+                </ul>
 
 
             </li>
