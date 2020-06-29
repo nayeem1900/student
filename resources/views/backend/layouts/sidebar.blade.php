@@ -99,7 +99,7 @@
                     <li class="nav-item">
                         <a href="{{route('setups.student.year.view')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>View Yeat</p>
+                            <p>View Year</p>
                         </a>
                     </li>
 
@@ -123,8 +123,21 @@
                     </li>
 
                 </ul>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('setups.fee.category.view')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p> Fee Category</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('setups.fee.amount.view')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p> Fee Category Amount</p>
+                        </a>
+                    </li>
 
-            </li>
+                </ul>
 
     </ul>
 </nav>
