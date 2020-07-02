@@ -53,7 +53,7 @@
                                     <div class="add_item">
                                         <div class="form-row">
 
-                                            <div class="form-group  col-md-5">
+                                            <div class="form-group col-md-5">
                                                 <label>Fee Category</label>
 
                                                     <select name="fee_category_id"class="form-control">
@@ -62,7 +62,6 @@
                                                             <option value="{{$category->id}}" {{($editData['0']->fee_category_id==$category->id)?"selected":""}}>{{$category->name}}</option>
                                                         @endforeach
                                                     </select>
-
 
                                             </div>
 
@@ -79,7 +78,7 @@
                                                     <select name="class_id[]"class="form-control">
                                                         <option value="">Select Class</option>
                                                         @foreach($classes as $cls)
-                                                            <option value="{{$cls->id}}">{{$cls->name}}</option>
+                                                            <option value="{{$cls->id}}" {{($edit->class_id==$cls->id)?"selected":""}}> {{$cls->name}}</option>
                                                         @endforeach
                                                     </select>
 
@@ -89,17 +88,18 @@
                                             <div class="form-group col-md-5">
                                                 <label>Amount</label>
 
-                                                    <input type="text" name="amount[]"class="form-control">
+                                                    <input type="text" name="amount[]" value="{{$edit->amount}}" class="form-control">
 
 
                                             </div>
                                             <div class="form-group clo-md-1" style="padding-top: 30px;">
-
                                                 <div class="form-row">
 
                                                     <span class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i> </span>
                                                     <span class="btn btn-danger removeeventmore"><i class="fa fa-minus-circle"></i> </span>
                                                 </div>
+
+
                                             </div>
                                         </div>
                                             </div>
@@ -137,7 +137,7 @@
         <div class="whole_extra_item_add" id="whole_extra_item_add">
             <div class="delete_whole_extra_item_add" id="delete_whole_extra_item_add">
 
-               @foreach($editData as $edit)
+
                 <div class="form-row">
 
                     <div class="form-group col-md-5">
@@ -145,14 +145,14 @@
                         <select name="class_id[]"class="form-control">
                             <option value="">Select Class</option>
                             @foreach($classes as $cls)
-                                <option value="{{$cls->id}}" {{($edit->class_id==$cls->id)?"selected":""}}> {{$cls->name}}</option>
+                                <option value="{{$cls->id}}">{{$cls->name}}</option>
                             @endforeach
                         </select>
 
                     </div>
                     <div class="form-group col-md-5">
                         <label>Amount</label>
-                        <input type="text" name="amount[]" value="{{$edit->amount}}" class="form-control">
+                        <input type="text" name="amount[]"class="form-control">
 
                     </div>
                     <div class="form-group col-md-1" style="padding-top: 30px">
@@ -165,7 +165,7 @@
                     </div>
                 </div>
                 </div>
-                @endforeach
+
 
 
         </div>

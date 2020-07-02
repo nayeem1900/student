@@ -18,3 +18,8 @@ scrypt type="text/javascript">
     });
     });
 </scrypt>
+
+
+
+
+<a title="Edit" class="btn btn-sm btn-primary" href="{{route('setups.fee.amount.edit',$value->fee_category_id)}}"><i class="fa fa-edit"></i></a>

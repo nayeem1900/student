@@ -54,29 +54,50 @@ if($countClass != Null){
         return redirect()->route('setups.fee.amount.view');
     }
 
-    public function edit($id){
+    public function edit($fee_category_id){
 
-        $editData=FeeCategory::find($id);
-        return view('backend.setup.fee_category.add-fee-category',compact('editData'));
+        $data['editData']=FeeCategoryAmount::where ('fee_category_id',$fee_category_id)->orderBy('class_id','asc')->get();
+        $data['fee_categories']=FeeCategory::all();
+        $data['classes']=StudentClass::all();
+
+        return view('backend.setup.fee_amount.edit-fee-amount',$data);
     }
 
 
-    public function update(Request $request,$id){
+    public function update(Request $request,$fee_category_id){
+        if ($request->class_id==Null){
 
-        $data =FeeCategory::find($id);
-        $this->validate($request,[
+return redirect()->back()->with('error', 'sorry you dont select any Item');
+        }else{
 
-            'name'=>'required|unique:fee_categories,name,'.$data->id
-        ]);
+            FeeCategoryAmount::where('fee_category_id',$fee_category_id)->delete();
+            $countClass=count($request->class_id);
 
 
-        $data->name=$request->name;
+                for($i=0; $i < $countClass ; $i++){
+                    $fee_amount=new FeeCategoryAmount();
+                    $fee_amount->fee_category_id=$request->fee_category_id;
+                    $fee_amount->class_id=$request->class_id[$i];
+                    $fee_amount->amount=$request->amount[$i];
+                    $fee_amount->save();
 
-        $data->save();
+                }
+        }
+
         session()->flash('success',' class update success');
-        return redirect()->route('setups.fee.category.view');
+        return redirect()->route('setups.fee.amount.view');
 
     }
+
+
+   public function details($fee_category_id){
+       $data['editData']=FeeCategoryAmount::where ('fee_category_id',$fee_category_id)->orderBy('class_id','asc')->get();
+
+
+       return view('backend.setup.fee_amount.details-fee-amount',$data);
+
+   }
+
 
 
     public function delete($id){
@@ -87,7 +108,7 @@ if($countClass != Null){
 
 
         session()->flash('success', 'Logo has deleted Successfully');
-        return redirect()->route('setups.fee.category.view');
+        return redirect()->route('setups.fee.amount.view');
     }
 
 }

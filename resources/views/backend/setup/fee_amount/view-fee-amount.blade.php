@@ -55,11 +55,13 @@
                                     </thead>
                                     <tbody>
                                     @foreach($allData as $key=>$value)
-                                        <tr>
+                                        <tr class="{{$value->id}}">
                                             <td>{{$key+1}}</td>
-                                            <td>{{($value->fee_category_id)}}</td>
+                                            <td>{{$value['fee_category']['name']}}</td>
 
                                             <td>
+                                                <a title="Details" class="btn btn-sm btn-success" href="{{route('setups.fee.amount.details',$value->fee_category_id)}}"><i class="fa fa-eye"></i></a>
+
                                                 <a title="Edit" class="btn btn-sm btn-primary" href="{{route('setups.fee.amount.edit',$value->fee_category_id)}}"><i class="fa fa-edit"></i></a>
 
 

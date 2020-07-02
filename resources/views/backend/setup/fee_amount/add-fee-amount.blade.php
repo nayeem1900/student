@@ -48,7 +48,7 @@
 
                             </div><!-- /.card-header -->
                             <div class="card-body" >
-                                <form method="POST" action="{{(@$editData)?route('setups.fee.amount.update',$editData->id):route('setups.fee.amount.store')}}" enctype="multipart/form-data" id="myForm" >
+                                <form method="POST" action="{{route('setups.fee.amount.store')}}" enctype="multipart/form-data" id="myForm" >
                                     @csrf
                                     <div class="add_item">
                                         <div class="form-row">
@@ -70,9 +70,9 @@
                                         </div>
 
                                         <div class="form-row">
-                                            <div class="form-group row">
+                                            <div class="form-group col-md-10">
                                                 <label>Class</label>
-                                                <div class="col-md-10">
+
                                                     <select name="class_id[]"class="form-control">
                                                         <option value="">Select Class</option>
                                                         @foreach($classes as $cls)
@@ -80,15 +80,15 @@
                                                         @endforeach
                                                     </select>
 
-                                                </div>
+
                                             </div>
-                                            <div class="form-group row">
+                                            <div class="form-group col-md-10 ">
                                                 <label>Amount</label>
-                                                <div class="col-md-10">
+
                                                     <input type="text" name="amount[]"class="form-control">
 
-                                                </div>
-                                                <div class="form-group clo-md-1" style="padding-top: 30px;">
+
+                                                <div class="form-group clo-md-1" style="padding-top:30px;">
                                                     <span class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i></span>
                                                 </div>
                                             </div>
@@ -100,14 +100,14 @@
 
 
                                     </div>
-                                    <div class="col-md-4 offset-md-4">
+
                                         <button type="submit" class="btn btn-primary">
 
                                             {{(@$editData)?'Update':'Submit'}}
 
                                         </button>
 
-                                    </div>
+
 
                                 </form>
 

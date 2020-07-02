@@ -53,7 +53,7 @@
                                     <div class="add_item">
                                         <div class="form-row">
 
-                                            <div class="form-group row col-md-5">
+                                            <div class="form-group  col-md-5">
                                                 <label>Fee Category</label>
 
                                                     <select name="fee_category_id"class="form-control">
@@ -131,7 +131,7 @@
         <!-- /.content -->
     </div>
 
-    <div style="visibility: hidden">
+    <div style="visibility:hidden;">
         <div class="whole_extra_item_add" id="whole_extra_item_add">
             <div class="delete_whole_extra_item_add" id="delete_whole_extra_item_add">
 
