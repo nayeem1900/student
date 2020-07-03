@@ -150,7 +150,13 @@ Route::group(['prefix'=>'setups','middleware' => 'auth'], function(){
     Route::post('/assign/subject/update/{class_id}', 'Backend\Setup\AssignSubjectController@update')->name('setups.assign.subject.update');
     Route::post('/assign/subject/delete/{id}', 'Backend\Setup\AssignSubjectController@delete')->name('setups.assign.subject.delete');
     Route::get('/assign/subject/details/{class_id}', 'Backend\Setup\AssignSubjectController@details')->name('setups.assign.subject.details');
-
+    //Designation
+    Route::get('/designation/view', 'Backend\Setup\DesignationController@view')->name('setups.designation.view');
+    Route::get('/designation/view/add', 'Backend\Setup\DesignationController@add')->name('setups.designation.add');
+    Route::post('/designation/view/store', 'Backend\Setup\DesignationController@store')->name('setups.designation.store');
+    Route::get('/designation/view/edit/{id}', 'Backend\Setup\DesignationController@edit')->name('setups.designation.edit');
+    Route::post('/designation/view/update/{id}', 'Backend\Setup\DesignationController@update')->name('setups.designation.update');
+    Route::post('/designation/view/delete/{id}', 'Backend\Setup\DesignationController@delete')->name('setups.designation.delete');
 
 
 
