@@ -35,37 +35,33 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h3>Assign Subject List
+                                <h3>Assign Subject Details
 
-                                    <a class="btn btn-success float-right btn-sm" href="{{route('setups.assign.subject.add')}}"><i class="fa fa-plus-circle"></i> Add Assign Subject</a>
+                                    <a class="btn btn-success float-right btn-sm" href="{{route('setups.assign.subject.view')}}"><i class="fa fa-list"></i>Assign Subject List</a>
                                 </h3>
 
                             </div><!-- /.card-header -->
                             <div class="card-body">
-
-                                <table id="example1" class="table table-bordered table-hover">
+                                <h3><strong>Class Name :</strong>{{$editData['0']['student_class']['name']}}</h3>
+                                <table  class="table table-bordered table-hover">
 
                                     <thead>
                                     <tr>
                                         <th>SL</th>
-                                        <th>Class Name</th>
-
-                                        <th>Action</th>
+                                        <th>Subject</th>
+                                        <th>Full Mark</th>
+                                        <th>Pass Mark</th>
+                                        <th>Subjective</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($allData as $key=>$value)
-                                        <tr class="{{$value->id}}">
+                                    @foreach($editData as $key=>$value)
+                                        <tr>
                                             <td>{{$key+1}}</td>
-                                            <td>{{$value['student_class']['name']}}</td>
-
-                                            <td>
-                                                <a title="Details" class="btn btn-sm btn-success" href="{{route('setups.assign.subject.details',$value->class_id)}}"><i class="fa fa-eye"></i></a>
-
-                                                <a title="Edit" class="btn btn-sm btn-primary" href="{{route('setups.assign.subject.edit',$value->class_id)}}"><i class="fa fa-edit"></i></a>
-
-
-                                            </td>
+                                            <td>{{$value['subject']['name']}}</td>
+                                            <td>{{$value->full_mark}}</td>
+                                            <td>{{$value->pass_mark}}</td>
+                                            <td>{{$value->subjective_mark}}</td>
 
                                         </tr>
                                     @endforeach
@@ -76,6 +72,7 @@
 
 
                                 </table>
+
 
                             </div><!-- /.card-body -->
                         </div>
