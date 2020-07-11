@@ -48,14 +48,14 @@
                                     @include('backend.layouts.message')
 
                                     <div class="form-group row">
-                                        <label for="usertype" class="col-md-4 col-form-label text-md-right">{{ __('User Type') }}</label>
+                                        <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('User Role') }}</label>
 
                                         <div class="col-md-4">
 
-                                            <select name="usertype" id="usertype" class="form-control">
+                                            <select name="role" id="role" class="form-control">
                                                 <option value="">Select Role</option>
                                                 <option value="Admin">Admin</option>
-                                                <option value="User">User</option>
+                                                <option value="Operator">Operator</option>
 
                                             </select>
 
@@ -87,15 +87,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
-                                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                                        <div class="col-md-4">
-                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" >
-
-
-                                        </div>
-                                    </div>
 
 
 
@@ -132,50 +123,40 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            });
+
             $('#myForm').validate({
                 rules: {
-                    usertype: {
+                    "role": {
                         required: true,
                     },
-                    email: {
-                        required: true,
-                        email: true,
-                    },
-                    password: {
-                        required: true,
-                        minlength: 6
-                    },
-                    password2: {
+                    "name": {
                         required: true,
 
-                        equalTo:'#password'
                     },
-                    terms: {
-                        required: true
+                    "password": {
+                        required: true,
+                        minlength:6,
+
                     },
+                    "email": {
+                        required: true,
+                        email:true,
+
+                    }
                 },
 
                 messages: {
-                    usertype: {
-                        required: "Please select ueser role",
-
-                messages: {
-                    email: {
-                        required: "Please enter a email address",
-                        email: "Please enter a vaild email address"
+                    name:{
+                        required:'Please Enter User Name',
                     },
-                    password: {
-                        required: "Please provide a password",
-                        minlength: "Your password must be at least 5 characters long"
+                    role:{
+                        required:'Please Enter User Role',
                     },
+                    email:{
+                        required:'Please Enter User Email',
+                    }
 
-                    password2: {
-                        required: "Please  enter confirm password",
-                        equalTo: "confirm Password does not match"
-                    },
 
-                    terms: "Please accept our terms"
                 },
                 errorElement: 'span',
                 errorPlacement: function (error, element) {
@@ -191,6 +172,7 @@
             });
         });
     </script>
+
 
 
 @endsection

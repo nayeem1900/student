@@ -159,6 +159,15 @@ Route::group(['prefix'=>'setups','middleware' => 'auth'], function(){
     Route::post('/designation/view/delete/{id}', 'Backend\Setup\DesignationController@delete')->name('setups.designation.delete');
 
 
+});
 
 
+Route::group(['prefix'=>'students','middleware' => 'auth'], function(){
+
+    Route::get('/reg/view', 'Backend\Student\RegController@view')->name('students.registration.view');
+    Route::get('/reg/add', 'Backend\Student\RegController@add')->name('students.registration.add');
+    Route::post('/reg/store', 'Backend\Student\RegController@store')->name('students.registration.store');
+    Route::get('/reg/edit/{id}', 'Backend\Student\RegController@edit')->name('students.registration.edit');
+    Route::post('/reg/update/{id}', 'Backend\Student\RegController@update')->name('students.registration.update');
+    Route::post('/reg/delete/{id}', 'Backend\Student\RegController@delete')->name('students.registration.delete');
 });
