@@ -12,12 +12,17 @@ use App\Model\Year;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 class RegController extends Controller
 {
     public function view(){
+        $data['years']=Year::orderBy('id', 'asc')->get();
 
-        $data['allData']=AssignStudent::all();
+        $data['classes']=StudentClass::all();
+        $data['year_id']=Year::orderBy('id','asc')->first()->id;
+        $data['class_id']=StudentClass::orderBy('id','asc')->first()->id;
+        $data['allData']=AssignStudent::where('year_id',$data['year_id'])->where('class_id',$data['class_id'])->get();
 
 
         return view ('backend.student.student_reg.view-student', $data);
@@ -25,10 +30,24 @@ class RegController extends Controller
 
     }
 
+    public function YearClassWise(Request $request){
+
+        $data['years']=Year::orderBy('id', 'asc')->get();
+
+        $data['classes']=StudentClass::all();
+        $data['year_id']=$request->year_id;
+        $data['class_id']=$request->class_id;
+        $data['allData']=AssignStudent::where('year_id',$request->year_id)->where('class_id',$request->class_id)->get();
+
+        return view ('backend.student.student_reg.view-student', $data);
+
+    }
+
 
     public function add(){
 
-        $data['years']=Year::all();
+        $data['years']=Year::orderBy('id', 'asc')->get();
+
         $data['classes']=StudentClass::all();
         $data['groups']=StudentGroup::all();
         $data['shifts']=StudentShift::all();
