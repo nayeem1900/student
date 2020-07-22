@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{{asset('bacekend/admin_panel/plugins/jqvmap/jqvmap.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('backend/admin_panel/dist/css/adminlte.min.css')}}">
+    <!-- Custom DatePicker CSS -->
+    <link rel="stylesheet" href="{{asset('backend/admin_panel/dist/css/daterangepicker.css')}}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{asset('backend/admin_panel/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
     <!-- Daterange picker -->
@@ -208,6 +210,10 @@ $(function(){
 <script src="{{asset('backend/admin_panel/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('backend/admin_panel/dist/js/adminlte.js')}}"></script>
+
+<!-- Custom Date Picker -->
+<script src="{{asset('backend/admin_panel/dist/js/daterangepicker.js')}}"></script>
+<script src="{{asset('backend/admin_panel/dist/js/locales.min.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('backend/admin_panel/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->

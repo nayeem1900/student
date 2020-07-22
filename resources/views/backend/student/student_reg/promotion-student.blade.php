@@ -37,13 +37,13 @@
                             <div class="card-header">
 
                                 @if(isset($editData))
-                               <h3> Edit Student
-                                    @else
-                                    Add Student
-                                    @endif
+                                    <h3>Promotion Student
+                                        @else
+                                            Add Student
+                                        @endif
 
-                                    <a class="btn btn-success float-right btn-sm" href="{{route('students.registration.view')}}"><i class="fa fa-list"></i>Student List</a>
-                               </h3>
+                                        <a class="btn btn-success float-right btn-sm" href="{{route('students.registration.view')}}"><i class="fa fa-list"></i>Student List</a>
+                                    </h3>
 
 
                             </div><!-- /.card-header -->
@@ -51,7 +51,7 @@
 
 
 
-                                <form method="POST" action="{{(@$editData)?route('students.registration.update',$editData->student_id):route('students.registration.store')}}" id="myForm" enctype="multipart/form-data" >
+                                <form method="POST" action="{{route('students.registration.promotion.store',$editData->student_id)}}" id="myForm" enctype="multipart/form-data" >
                                     @csrf
                                     <input type="hidden"name="id"value="{{@$editData->id}}">
 
@@ -69,10 +69,10 @@
 
                                         </div>
                                         <div class="col-md-4">
-                                        <label>Mother's Name <font style="color: red">*</font></label>
-                                        <input type="text" name="mname" value="{{@$editData['student']['mname']}}" class="form-control form-control-sm"id="mname">
+                                            <label>Mother's Name <font style="color: red">*</font></label>
+                                            <input type="text" name="mname" value="{{@$editData['student']['mname']}}" class="form-control form-control-sm"id="mname">
 
-                                    </div>
+                                        </div>
                                         <div class="col-md-4">
                                             <label>Mobile No <font style="color: red">*</font></label>
                                             <input type="text" name="mobile" value="{{@$editData['student']['mobile']}}" class="form-control form-control-sm"id="mobile">
@@ -126,7 +126,7 @@
                                                 @foreach($years as $year)
                                                     <option value="{{$year->id}}"{{(@$editData->year_id==$year->id)?"selected":""}}>{{$year->name}} </option>
 
-                                                    @endforeach
+                                                @endforeach
 
                                             </select>
 
@@ -186,14 +186,14 @@
 
 
 
-                                        <div class="form-group col-md-6"style="padding-top:30px;">
-                                            <button type="submit" class="btn btn-primary btn-sm">
+                                    <div class="form-group col-md-6"style="padding-top:30px;">
+                                        <button type="submit" class="btn btn-primary btn-sm">
 
-                                               {{(@$editData)?'Update':'Submit'}}
+                                            {{(@$editData)?'Promotion':'Submit'}}
 
-                                            </button>
+                                        </button>
 
-                                        </div>
+                                    </div>
 
                                 </form>
 

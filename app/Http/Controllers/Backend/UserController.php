@@ -36,8 +36,9 @@ return view ('backend.user.view-user', $data);
 
         ]);
 
-        $code=rand(0000,9999);
+
         $data =new User();
+        $code=rand(0000,9999);
         $data->usertype= 'admin';
         $data->role= $request->role;
         $data->name= $request->name;

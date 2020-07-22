@@ -16,7 +16,7 @@ class CreateDiscountStudentsTable extends Migration
         Schema::create('discount_students', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('assign_student_id');
-            $table->integer('fee_category_id');
+            $table->integer('fee_category_id')->nullable();
             $table->double('discount')->nullable();
             $table->timestamps();
         });

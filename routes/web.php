@@ -163,11 +163,21 @@ Route::group(['prefix'=>'setups','middleware' => 'auth'], function(){
 
 
 Route::group(['prefix'=>'students','middleware' => 'auth'], function(){
+    //Student Registration Part
 
     Route::get('/reg/view', 'Backend\Student\RegController@view')->name('students.registration.view');
     Route::get('/reg/add', 'Backend\Student\RegController@add')->name('students.registration.add');
     Route::post('/reg/store', 'Backend\Student\RegController@store')->name('students.registration.store');
-    Route::get('/reg/edit/{id}', 'Backend\Student\RegController@edit')->name('students.registration.edit');
-    Route::post('/reg/update/{id}', 'Backend\Student\RegController@update')->name('students.registration.update');
+    Route::get('/reg/edit/{student_id}', 'Backend\Student\RegController@edit')->name('students.registration.edit');
+    Route::post('/reg/update/{student_id}', 'Backend\Student\RegController@update')->name('students.registration.update');
     Route::get('/year-class-wise', 'Backend\Student\RegController@YearClassWise')->name('students.year.class.wise');
+    Route::get('/reg/promotion/{student_id}', 'Backend\Student\RegController@promotion')->name('students.registration.promotion');
+    Route::post('/reg/promotion/{student_id}', 'Backend\Student\RegController@promotionstore')->name('students.registration.promotion.store');
+    Route::get('/reg/details/{student_id}', 'Backend\Student\RegController@details')->name('students.registration.details');
+    //Student Roll Genarate Part
+    Route::get('/roll/view', 'Backend\Student\RollController@view')->name('students.roll.view');
+    Route::get('/roll/add', 'Backend\Student\RegController@add')->name('students.roll.add');
+    Route::post('/roll/store', 'Backend\Student\RegController@store')->name('students.roll.store');
+
+
 });

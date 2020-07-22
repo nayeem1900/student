@@ -101,7 +101,7 @@
                                         <th>Code</th>
                                         @endif
 
-                                        <th width="12%">Action</th>
+                                        <th width="14%">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -121,11 +121,12 @@
                                             @if(Auth::user()->role=="Admin")
                                                 <td>{{$value['student']['code']}}</td>
                                             @endif
-                                            <td>{{($value->class_id)}}</td>
-                                            <td>{{($value->year_id)}}</td>
 
                                             <td>
-                                                <a title="Edit" class="btn btn-sm btn-primary" href="{{route('students.registration.edit',$value->id)}}"><i class="fa fa-edit"></i></a>
+                                                <a title="Edit" class="btn btn-sm btn-primary" href="{{route('students.registration.edit',$value->student_id)}}"><i class="fa fa-edit"></i></a>
+                                                <a title="Promotion" class="btn btn-sm btn-success" href="{{route('students.registration.promotion',$value->student_id)}}"><i class="fa fa-check"></i></a>
+                                                <a target="_blank" title="Details" class="btn btn-sm btn-info" href="{{route('students.registration.details',$value->student_id)}}"><i class="fa fa-eye"></i></a>
+
 
 
                                             </td>
@@ -155,7 +156,7 @@
                                                 <th>Code</th>
                                             @endif
 
-                                            <th width="12%">Action</th>
+                                            <th width="14%">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -179,7 +180,10 @@
                                                 <td>{{($value->year_id)}}</td>
 
                                                 <td>
-                                                    <a title="Edit" class="btn btn-sm btn-primary" href="{{route('students.registration.edit',$value->id)}}"><i class="fa fa-edit"></i></a>
+                                                    <a title="Edit" class="btn btn-sm btn-primary" href="{{route('students.registration.edit',$value->student_id)}}"><i class="fa fa-edit"></i></a>
+                                                    <a title="Promotion" class="btn btn-sm btn-success" href="{{route('students.registration.promotion',$value->student_id)}}"><i class="fa fa-check"></i></a>
+                                                    <a target="_blank" title="Details" class="btn btn-sm btn-info" href="{{route('students.registration.details',$value->student_id)}}"><i class="fa fa-eye"></i></a>
+
 
 
                                                 </td>
