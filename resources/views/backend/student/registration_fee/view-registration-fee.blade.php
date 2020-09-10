@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Manage Roll Genarate</h1>
+                        <h1 class="m-0 text-dark">Manage Registration Fee</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Roll Genarate</li>
+                            <li class="breadcrumb-item active">Registration Fee</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -42,8 +42,7 @@
 
                             <div class="card-body">
 
-                                <form method="post" action="{{route('students.roll.store')}}" id="myForm">
-                                    @csrf
+
                                     <div class="form-row">
 
                                         <div class="col-md-4">
@@ -71,38 +70,40 @@
                                             </select>
 
                                         </div>
-                                        <div class="form-group col-md-4" style="padding-top:29px;">
+                                        <div class="col-md-4" style="padding-top:29px;">
 
                                             <a id="search"class="btn btn-primary btn-sm" name="search">Search</a>
                                         </div>
 
-                                    </div><br/>
-                                    <div class="row d-none" id="roll-generate">
-                                        <div class="col-md-12">
-                                            <table class="table table-bordered table-striped dt-responsive" style="width: 100%">
-                                            <thead>
-                                            <tr>
-                                                <th>ID No</th>
-                                                <th>Student Name</th>
-                                                <th>Father's Name</th>
-                                                <th>Roll No</th>
-                                            </tr>
-                                            </thead>
-                                                <tbody id="roll-generate-tr"></tbody>
-
-                                            </table>
-
-                                        </div>
-
                                     </div>
-                                    <button type="submit" class="btn btn-success btn-sm">Roll Generate</button>
-
-
-                                </form>
 
 
                             </div>
                             <!-- /.card-body -->
+                            <div class="card-body">
+                                <div id="DocumentResults"></div>
+                                <script id="document-template" type="text/x-handlebars-template">
+
+                                <table class="table-sm table-bordered table-striped" style="width: 100%">
+                                    <thead>
+                                    <tr>
+                                        @{{ {thsource }}
+                                    </tr>
+
+                                    </thead>
+                                    <tbody>
+                                    @{{ #each this }}
+                                    <tr>
+                                        @{{ {tdsource }}
+                                    </tr>
+                                        @{{ /each }}
+
+                                    </tbody>
+                                </table>
+
+                            </script>
+
+                            </div>
                         </div>
 
 
@@ -119,12 +120,12 @@
 
 
 
-    <script type="text/javascript">
-        $(document).on('click','#search',function () {
+    <script type="javascript">
+        $(document).on('click','#search', function () {
 
             var year_id=$('#year_id').val();
             var class_id=$('#class_id').val();
-           /* $('.notifyjs-corner').html('');
+            $('.notifyjs-corner').html('');
             if(year_id==''){
                 $.notify("Year required",{globalPosition:'top-right',className:'error'});
                 return false;
@@ -132,30 +133,25 @@
             if(class_id=='') {
                 $.notify("Class required", {globalPosition: 'top-right', className: 'error'});
                 return false;
-            }*/
+            }
             $.ajax({
-            url:"{{route('students.roll.get-student')}}",
-                type:"GET",
-                data:{'year_id':year_id,'class_id':class_id},
-                success:function (data){
-                $('#roll-generate').removeClass('d-none');
-                var html='';
-                $.each(data,function (key,v) {
-                    html+=
-                        '<tr>'+
-                            '<td>'+ v.student.id_no+'<input type="hidden" name="student_id[]"value=" '+v.student_id+' "> </td>'+
-                          '<td>'+ v.student.name+ '</td>'+
-                         '<td>'+ v.student.fname+ '</td>'+
-                        '<td><input type="text" class="form-control form-control-sm" name="roll[]"value=" '+v.roll+' "> </td>'+
-                        '<tr>';
+            url:"{{route('students.reg.fee.get-student')}}",
+                type:"get",
+                data:{'year_id':year_id, 'class_id':class_id},
+                beforeSend:function () {
 
-                });
-
-                    html=$('#roll-generate-tr').html(html);
+                },
+                success:function (data) {
+                var source=$('#document-template').html()
+                    var template = Handlebars.compile(source);
+                var html=template(data);
+                $('#DocumentResults').html(html);
+                $('[data-toggle="tooltip"]').tooltip();
 
                     
                 }
 
+
             });
 
         });
@@ -164,38 +160,6 @@
 
 
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-
-
-            $('#myForm').validate({
-                rules: {
-
-                    "roll": {
-                        required: true,
-
-                    }
-                },
-
-
-                messages: {
-
-
-                },
-                errorElement: 'span',
-                errorPlacement: function (error, element) {
-                    error.addClass('invalid-feedback');
-                    element.closest('.form-group').append(error);
-                },
-                highlight: function (element, errorClass, validClass) {
-                    $(element).addClass('is-invalid');
-                },
-                unhighlight: function (element, errorClass, validClass) {
-                    $(element).removeClass('is-invalid');
-                }
-            });
-        });
-    </script>
 
 
 

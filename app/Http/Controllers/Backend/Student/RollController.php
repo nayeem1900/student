@@ -21,7 +21,7 @@ class RollController extends Controller
     public function view()
     {
 
-        $data['years'] = Year::orderBy('id', 'asc')->get();
+        $data['years'] = Year::orderBy('id','asc')->get();
 
         $data['classes'] = StudentClass::all();
 
@@ -33,11 +33,26 @@ class RollController extends Controller
     public function getStudent(Request $request){
       /* dd('ok');*/
       $allData=AssignStudent::with(['student'])->where('year_id',$request->year_id)->where('class_id',$request->class_id)->get();
-dd($allData->toArray());
+
 return response()->json($allData);
 
     }
 
+    public function store(Request $request){
+        
+        $year_id=$request->year_id;
+        $class_id=$request->class_id;
+        if($request->student_id !=null){
+            for($i=0;$i<count($request->student_id);$i++){
+                AssignStudent::where('year_id',$year_id)->where('class_id',$class_id)->where('student_id',$request->student_id[$i])
+                    ->update(['roll'=>$request->roll[$i]]);
+            }
+
+        }else{
+            return redirect()->back()->with('error', "sorry there are no sudent");
+        }
+        return redirect()->route('students.roll.view')->with('success', "successfully roll generate");
+    }
 
 
     }

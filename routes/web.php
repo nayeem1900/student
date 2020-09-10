@@ -177,9 +177,10 @@ Route::group(['prefix'=>'students','middleware' => 'auth'], function(){
     //Student Roll Genarate Part
     Route::get('/roll/view', 'Backend\Student\RollController@view')->name('students.roll.view');
     Route::get('/roll/get-student', 'Backend\Student\RollController@getstudent')->name('students.roll.get-student');
-
     Route::post('/roll/store', 'Backend\Student\RollController@store')->name('students.roll.store');
-
+    //Student Registration Fee
+    Route::get('/reg/fee/view', 'Backend\Student\RegistrationFeeController@view')->name('students.reg.fee.view');
+    Route::get('/reg/get-student', 'Backend\Student\RegistrationFeeController@getstudent')->name('students.reg.fee.get-student');
 
 
 });
