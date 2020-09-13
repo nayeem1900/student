@@ -39,7 +39,7 @@ return response()->json($allData);
     }
 
     public function store(Request $request){
-        
+
         $year_id=$request->year_id;
         $class_id=$request->class_id;
         if($request->student_id !=null){
