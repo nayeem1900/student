@@ -60,11 +60,11 @@ class RegistrationFeeController extends Controller
             $registrationfee = FeeCategoryAmount::where('fee_category_id', '1')->where('class_id', $v->class_id)->first();
             $color = 'success';
             $html[$key]['tdsource'] = '<td>' . ($key + 1) . '</td>';
-            $html[$key]['tdsource'] = '<td>' . $v['student']['id_no'].'</td>';
-            $html[$key]['tdsource'] = '<td>' . $v['student']['name'].'</td>';
-            $html[$key]['tdsource'] = '<td>' . $v->roll.'</td>';
-            $html[$key]['tdsource'] = '<td>' . $registrationfee->amount . 'TK' . '</td>';
-            $html[$key]['tdsource'] = '<td>' . $v['discount']['discount'] . '%' . '</td>';
+            $html[$key]['tdsource'] .= '<td>' . $v['student']['id_no'].'</td>';
+            $html[$key]['tdsource'] .= '<td>' . $v['student']['name'].'</td>';
+            $html[$key]['tdsource'] .= '<td>' . $v->roll.'</td>';
+            $html[$key]['tdsource'] .= '<td>' . $registrationfee->amount . 'TK' . '</td>';
+            $html[$key]['tdsource'] .= '<td>' . $v['discount']['discount'] . '%' . '</td>';
 
             $orginalfee = $registrationfee->amount;
             $discount = $v['discount']['discount'];
