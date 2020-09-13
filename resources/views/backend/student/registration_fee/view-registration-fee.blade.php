@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Registration Fee</li>
+                            <li class="breadcrumb-item active">Fee</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -70,40 +70,37 @@
                                             </select>
 
                                         </div>
-                                        <div class="col-md-4" style="padding-top:29px;">
+                                        <div class="form-group col-md-4" style="padding-top:29px;">
 
                                             <a id="search"class="btn btn-primary btn-sm" name="search">Search</a>
                                         </div>
 
                                     </div>
 
-
                             </div>
                             <!-- /.card-body -->
                             <div class="card-body">
                                 <div id="DocumentResults"></div>
                                 <script id="document-template" type="text/x-handlebars-template">
+                                    <table class="table-sm table-bordered table-striped" style="width: 100%">
+                                        <thead>
+                                        <tr>
+                                            @{{{thsource}}}
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @{{#each this}}
+                                        <tr>
+                                            @{{{tdsource}}}
+                                        </tr>
+                                        @{{/each }}
+                                        </tbody>
+                                    </table>
 
-                                <table class="table-sm table-bordered table-striped" style="width: 100%">
-                                    <thead>
-                                    <tr>
-                                        @{{ {thsource }}
-                                    </tr>
-
-                                    </thead>
-                                    <tbody>
-                                    @{{ #each this }}
-                                    <tr>
-                                        @{{ {tdsource }}
-                                    </tr>
-                                        @{{ /each }}
-
-                                    </tbody>
-                                </table>
-
-                            </script>
+                                </script>
 
                             </div>
+
                         </div>
 
 
@@ -120,43 +117,43 @@
 
 
 
-    <script type="javascript">
-        $(document).on('click','#search', function () {
+    <script type="text/javascript">
+        $(document).on('click','#search',function () {
 
             var year_id=$('#year_id').val();
             var class_id=$('#class_id').val();
-            $('.notifyjs-corner').html('');
-            if(year_id==''){
-                $.notify("Year required",{globalPosition:'top-right',className:'error'});
-                return false;
-            }
-            if(class_id=='') {
-                $.notify("Class required", {globalPosition: 'top-right', className: 'error'});
-                return false;
-            }
-            $.ajax({
-            url:"{{route('students.reg.fee.get-student')}}",
-                type:"get",
-                data:{'year_id':year_id, 'class_id':class_id},
-                beforeSend:function () {
+            /* $('.notifyjs-corner').html('');
+             if(year_id==''){
+             $.notify("Year required",{globalPosition:'top-right',className:'error'});
+             return false;
+             }
+             if(class_id=='') {
+             $.notify("Class required", {globalPosition: 'top-right', className: 'error'});
+             return false;
+             }*/
 
+
+            $.ajax({
+                url:"{{route('students.reg.fee.get-student')}}",
+                type:"get",
+                data:{'year_id':year_id,'class_id':class_id},
+                beforeSend:function () {
+                    
                 },
                 success:function (data) {
-                var source=$('#document-template').html()
-                    var template = Handlebars.compile(source);
-                var html=template(data);
-                $('#DocumentResults').html(html);
-                $('[data-toggle="tooltip"]').tooltip();
-
+                    var source=$("#document-template").html();
+                    var template=Handlebars.compile(source);
+                    var html=template(data);
+                    $('#DocumentResults').html(html);
+                    $('[data-toggle="tooltip"]').tooltip();
                     
                 }
-
-
             });
 
         });
 
     </script>
+
 
 
 
