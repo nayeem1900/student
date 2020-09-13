@@ -76,7 +76,7 @@
 
 
 {{--jj--}}
-
+<div class="container">
 
 <div class="row">
 
@@ -141,13 +141,10 @@
                 <td style="width: 50%">Fee(This Student)</td>
                 <td>{{$finalfee}}TK</td>
             </tr>
-            
 
             </tbody>
 
         </table>
-
-
 
         <i style="font-size: 10px;float: right;">Print Date:{{date("d m y")}}</i>
     </div>
@@ -167,6 +164,95 @@
         </tbody>
 
     </table>
+</div>
+<hr style="border:dashed 1px;width:96%; color:#DDD;margin-bottom: 50px;">
+    <div class="row">
+
+        <div class="col-md-12 text-center">
+            <h5 style="font-weight: bold;padding-top: -25px;">Student Registration Card</h5>
+
+        </div>
+        <div class="col-md-12">
+
+            @php
+                $registrationfee=
+                App\Model\FeeCategoryAmount::where('fee_category_id','1')->where('class_id',$details->class_id)->first();
+                $orginalfee=$registrationfee->amount;
+                $discount=$details['discount']['discount'];
+                $discountablefee=$discount/100*$orginalfee;
+               $finalfee = (float)$orginalfee - (float)$discountablefee;
+
+            @endphp
+            <table border="1" width="100%">
+                <tbody>
+                <tr>
+                    <td style="width: 50%">Student Name</td>
+                    <td>{{$details['student']['name']}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Father's Name</td>
+                    <td>{{$details['student']['fname']}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Mothers's Name</td>
+                    <td>{{$details['student']['mname']}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Year</td>
+                    <td>{{$details['year']['name']}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Class</td>
+                    <td>{{$details['student_class']['name']}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">ID No</td>
+                    <td>{{$details['student']['id_no']}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Roll</td>
+                    <td>{{$details->roll}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Mobile</td>
+                    <td>{{$details['student']['mobile']}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Registration Fee</td>
+                    <td>{{$orginalfee}}TK</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Discount</td>
+                    <td>{{$discount}}%</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Fee(This Student)</td>
+                    <td>{{$finalfee}}TK</td>
+                </tr>
+
+                </tbody>
+
+            </table>
+
+            <i style="font-size: 10px;float: right;">Print Date:{{date("d m y")}}</i>
+        </div>
+    </div><br/>
+    <div class="col-md-12">
+        <table border="0" width="100%">
+            <tbody>
+            <tr>
+
+                <td style="width: 30%"></td>
+                <td style="width: 30%"></td>
+                <td style="width: 40%; text-align: center;">
+                    <hr style="border:solid 1px;width: 60%;color: #000;margin-bottom: 0px;">
+                    <p style="text-align: center;">Principal/Head Master</p>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
 </div>
 </body>
 </html>
