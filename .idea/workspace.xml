@@ -4,10 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/app/Http/Controllers/Backend/Student/RegController.php" line="66" mnemonic="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97e5d565-4da7-4b00-ab0b-dafa920148d7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/backend/student/registration_fee/registration-fee-slip-pdf.blade.php" afterPath="$PROJECT_DIR$/resources/views/backend/student/registration_fee/registration-fee-slip-pdf.blade.php" />
-    </list>
+    <list default="true" id="97e5d565-4da7-4b00-ab0b-dafa920148d7" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -649,12 +646,12 @@
       <workItem from="1599922491431" duration="4267000" />
       <workItem from="1599933619037" duration="3556000" />
       <workItem from="1599962812484" duration="3102000" />
-      <workItem from="1600011101174" duration="926000" />
+      <workItem from="1600011101174" duration="1292000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="302529000" />
+    <option name="totallyTimeSpent" value="302895000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
