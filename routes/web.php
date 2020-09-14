@@ -182,6 +182,15 @@ Route::group(['prefix'=>'students','middleware' => 'auth'], function(){
     Route::get('/reg/fee/view', 'Backend\Student\RegistrationFeeController@view')->name('students.reg.fee.view');
     Route::get('/reg/get-student', 'Backend\Student\RegistrationFeeController@getstudent')->name('students.reg.fee.get-student');
     Route::get('/reg/fee/payslip', 'Backend\Student\RegistrationFeeController@payslip')->name('students.reg.fee.payslip');
+    //Student Monthly Fee
+    Route::get('/month/fee/view', 'Backend\Student\MonthlyFeeController@view')->name('students.monthly.fee.view');
+    Route::get('/month/get-student', 'Backend\Student\MonthlyFeeController@getstudent')->name('students.monthly.fee.get-student');
+    Route::get('/month/fee/payslip', 'Backend\Student\MonthlyFeeController@payslip')->name('students.monthly.fee.payslip');
+
+    //Student Exam Fee
+    Route::get('/exam/fee/view', 'Backend\Student\ExamFeeController@view')->name('students.exam.fee.view');
+    Route::get('/exam/get-student', 'Backend\Student\ExamFeeController@getstudent')->name('students.exam.fee.get-student');
+    Route::get('/exam/fee/payslip', 'Backend\Student\ExamFeeController@payslip')->name('students.exam.fee.payslip');
 
 
 });
