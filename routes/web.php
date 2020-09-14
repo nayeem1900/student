@@ -192,5 +192,18 @@ Route::group(['prefix'=>'students','middleware' => 'auth'], function(){
     Route::get('/exam/get-student', 'Backend\Student\ExamFeeController@getstudent')->name('students.exam.fee.get-student');
     Route::get('/exam/fee/payslip', 'Backend\Student\ExamFeeController@payslip')->name('students.exam.fee.payslip');
 
+    //Employee
+
+    Route::group(['prefix'=>'employees','middleware' => 'auth'], function(){
+
+        Route::get('/reg/view', 'Backend\Employee\EmployeeRegController@view')->name('employees.reg.view');
+        Route::get('/reg/add', 'Backend\Employee\EmployeeRegController@add')->name('employees.reg.add');
+        Route::post('/reg/store', 'Backend\Employee\EmployeeRegController@store')->name('employees.reg.store');
+        Route::get('/reg/edit/{id}', 'Backend\Employee\EmployeeRegController@edit')->name('employees.reg.edit');
+        Route::post('/reg/update/{id}', 'Backend\Employee\EmployeeRegController@update')->name('employees.reg.update');
+        Route::post('/reg/delete/{id}', 'Backend\Employee\EmployeeRegController@delete')->name('employees.reg.delete');
+    });
+
+
 
 });
