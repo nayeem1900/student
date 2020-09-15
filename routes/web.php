@@ -202,6 +202,7 @@ Route::group(['prefix'=>'students','middleware' => 'auth'], function(){
         Route::get('/reg/edit/{id}', 'Backend\Employee\EmployeeRegController@edit')->name('employees.reg.edit');
         Route::post('/reg/update/{id}', 'Backend\Employee\EmployeeRegController@update')->name('employees.reg.update');
         Route::post('/reg/delete/{id}', 'Backend\Employee\EmployeeRegController@delete')->name('employees.reg.delete');
+        Route::get('/reg/details/{id}', 'Backend\Employee\EmployeeRegController@details')->name('employees.reg.details');
     });
 
 

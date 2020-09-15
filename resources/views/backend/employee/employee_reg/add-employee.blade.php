@@ -125,17 +125,21 @@
                                             </select>
 
                                         </div>
+                                        @if(!@$editData)
                                         <div class="col-md-3">
                                             <label>Join of Date <font style="color: red">*</font></label>
                                             <input type="date" name="join_date" value="{{@$editData->join_date}}" class="form-control form-control-sm singledatepicker" autocomplete="off" id="dob">
 
                                         </div>
 
+
                                         <div class="col-md-3">
                                             <label>Salary <font style="color: red">*</font></label>
                                             <input type="text" name="salary" value="{{@$editData->salary}}" class="form-control form-control-sm" autocomplete="off">
 
                                         </div>
+                                        @endif
+
 
 
 
@@ -146,7 +150,7 @@
 
                                         </div>
                                         <div class="col-md-3">
-                                            <img id="showImage" src="{{(!empty($editData['employee']['image']))?url('upload/employee_images/'.$editData['student']['image']):url('upload/no_img.png')}}" style="width:100px;height:110px;border:1px solid#000;">
+                                            <img id="showImage" src="{{(!empty($editData->image))?url('upload/employee_images/'.$editData->image):url('upload/no_img.png')}}" style="width:100px;height:110px;border:1px solid#000;">
 
                                         </div>
 

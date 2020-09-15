@@ -79,6 +79,7 @@
 
                                             <td>
                                                 <a title="Edit" class="btn btn-sm btn-primary" href="{{route('employees.reg.edit',$value->id)}}"><i class="fa fa-edit"></i></a>
+                                                <a title="Details" target="_blank" class="btn btn-sm btn-success" href="{{route('employees.reg.details',$value->id)}}"><i class="fa fa-eye"></i></a>
 
 
                                             </td>
