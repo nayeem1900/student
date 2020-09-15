@@ -117,8 +117,8 @@
                                             <label>Designation <font style="color: red">*</font></label>
                                             <select name="designation_id" class="form-control form-control-sm">
                                                 <option value="">Select Designation</option>
-                                                @foreach($designations as $desig)
-                                                    <option value="{{$desig->id}}"{{(@$editData->designation_id==$desig->id)?"selected":""}}>{{$desig->name}} </option>
+                                                @foreach($designations as $designation)
+                                                    <option value="{{$designation->id}}"{{(@$editData->designation_id==$designation->id)?"selected":""}}>{{$designation->name}} </option>
 
                                                 @endforeach
 

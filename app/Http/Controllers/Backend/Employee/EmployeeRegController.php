@@ -45,7 +45,7 @@ class EmployeeRegController extends Controller
     public function store(Request $request){
 
         DB::transaction(function ()use($request){
-            $chekYear=date('Y',strtotime($request->join_date));
+            $chekYear=date('Ym',strtotime($request->join_date));
             $employee=User::where('usertype','employee')->orderBy('id','DESC')->first();
             if($employee==null){
                 $firstReg=0;
@@ -117,9 +117,9 @@ class EmployeeRegController extends Controller
         return redirect()->route('employees.reg.view')->with('success', 'Data Insert successfull');
     }
 
-    public function edit($employee_id){
+    public function edit($id){
 
-        $data['editData']=AssignStudent::with(['student','discount'])->where('student_id',$student_id)->first();
+        $data['editData']=User::find($id);
         /* dd($data['editData']->toArray());*/
 
         $data['years']=Year::orderBy('id', 'asc')->get();
@@ -127,7 +127,7 @@ class EmployeeRegController extends Controller
         $data['groups']=StudentGroup::all();
         $data['shifts']=StudentShift::all();
 
-        return view('backend.student.student_reg.add-student',$data);
+        return view('backend.employee.employee_reg.add-employee',$data);
 
 
     }
