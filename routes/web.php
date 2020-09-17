@@ -192,7 +192,7 @@ Route::group(['prefix'=>'students','middleware' => 'auth'], function(){
     Route::get('/exam/get-student', 'Backend\Student\ExamFeeController@getstudent')->name('students.exam.fee.get-student');
     Route::get('/exam/fee/payslip', 'Backend\Student\ExamFeeController@payslip')->name('students.exam.fee.payslip');
 
-    //Employee
+    //Employee Registration
 
     Route::group(['prefix'=>'employees','middleware' => 'auth'], function(){
 
@@ -204,7 +204,16 @@ Route::group(['prefix'=>'students','middleware' => 'auth'], function(){
         Route::post('/reg/delete/{id}', 'Backend\Employee\EmployeeRegController@delete')->name('employees.reg.delete');
         Route::get('/reg/details/{id}', 'Backend\Employee\EmployeeRegController@details')->name('employees.reg.details');
     });
+        //Employee Salary
 
+    Route::group(['prefix'=>'employees','middleware' => 'auth'], function(){
+
+        Route::get('/salary/view', 'Backend\Employee\EmployeeSalaryController@view')->name('employees.salary.view');
+
+        Route::get('/salary/increment/{id}', 'Backend\Employee\EmployeeSalaryController@increment')->name('employees.salary.increment');
+        Route::post('/salary/store/{id}', 'Backend\Employee\EmployeeSalaryController@store')->name('employees.salary.store');
+        Route::get('/salary/details/{id}', 'Backend\Employee\EmployeeSalaryController@details')->name('employees.salary.details');
+    });
 
 
 });
