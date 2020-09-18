@@ -48,12 +48,10 @@
                                     <thead>
                                     <tr>
                                         <th>SL</th>
-                                        <th>Name</th>
                                         <th>Id No</th>
+                                        <th>Name</th>
                                         <th>Date</th>
                                         <th>Attend Status</th>
-
-
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -61,10 +59,10 @@
                                     @foreach($allData as $key=>$value)
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                            <td>{{$value->employee_id}}</td>
-                                            <td>{{$value->employee_id}}</td>
-                                            <td>{{$value->employee_id}}</td>
-                                            <td>{{date('d-m-yy',strtotime($value->start_date))}} To {{date('d-m-yy',strtotime($value->end_date))}}</td>
+                                            <td>{{$value['user']['id_no']}}</td>
+                                            <td>{{$value['user']['name']}}</td>
+                                            <td>{{date('d-m-yy',strtotime($value->date))}}</td>
+                                            <td>{{$value->attend_status}}</td>
 
 
 

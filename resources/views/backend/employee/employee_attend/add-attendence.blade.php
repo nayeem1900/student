@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <link rel="stylesheet"type="text/css" href="{{asset('public/backend/css/attend.css')}}">
+   {{-- <link rel="stylesheet"type="text/css" href="{{asset('public/backend/css/attend.css')}}">--}}
     <style type="text/css">
         .switch-toggle{
             width: auto;
@@ -11,12 +11,12 @@
             cursor: pointer;
         }
         .switch-candy a{
-            border: 1px solid#333;
+            border: 1px solid #333;
             border-radius: 3px;
             box-shadow: 0 1px 1px rgba(0,0,0,0.2),inset 0 1px 1px rgba(255,255,255,0.45);
             background-color: white;
             background-image: -webkit-linear-gradient(top,rgba(255,255,255,0.2),transparent);
-            background-image: linear-gradient(to bottom,rgba(255,255,255,.02),transparent);
+            background-image: linear-gradient(to bottom,rgba(255,255,255,0.2),transparent);
         }
         .switch-toggle .switch-candy,.switch-light.switch-candy >span{
             background-color: #5a6268;
@@ -133,6 +133,37 @@
         </section>
         <!-- /.content -->
     </div>
+
+    <script type="text/javascript">
+$(document).on('click','.present',function () {
+    $(this).parents('tr').find('.datetime').css('pointer-events', 'none').css('background-color', '#dee2e6').css('color', '#495057');
+});
+    $(document).on('click','.leave',function () {
+        $(this).parents('tr').find('.datetime').css('pointer-events', '').css('background-color', '#dee2e6').css('color', '#495057');
+    });
+
+        $(document).on('click','.absent',function () {
+            $(this).parents('tr').find('.datetime').css('pointer-events','none').css('background-color','#dee2e6').css('color','#495057');
+
+    });
+
+    </script>
+
+    <script type="text/javascript">
+$(document).on('click','.present_all',function () {
+$("input[value=present]").prop('checked',true);
+$('.datetime').css('pointer-events','none').css('background-color','#dee2e6').css('color','#495057');
+});
+$(document).on('click','.leave_all',function () {
+    $("input[value=present]").prop('checked',true);
+    $('.datetime').css('pointer-events','none').css('background-color','#dee2e6').css('color','#495057');
+});
+$(document).on('click','.absent_all',function () {
+    $("input[value=present]").prop('checked',true);
+    $('.datetime').css('pointer-events','none').css('background-color','#dee2e6').css('color','#495057');
+});
+
+    </script>
 
     <script type="text/javascript">
         $(document).ready(function () {

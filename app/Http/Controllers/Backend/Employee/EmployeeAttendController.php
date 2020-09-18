@@ -47,61 +47,18 @@ class EmployeeAttendController extends Controller
 
     public function store(Request $request){
 
-        if($request->leave_purpose_id=="0"){
-            $leavepurpose= new LeavePurpose();
-            $leavepurpose->name=$request->name;
-            $leavepurpose->save();
-            $leave_purpose_id=$leavepurpose->id;
-        }else{
-            $leave_purpose_id=$request->leave_purpose_id;
-        }
+       $countemployee=count($request->employee_id);
+       for($i=0; $i<$countemployee;$i++){
+           $attend_status='attend_status'.$i;
+           $attend=new EmployeeAttendence();
+           $attend->date=date('Y-m-d',strtotime($request->date));
+           $attend->employee_id=$request->employee_id[$i];
+           $attend->attend_status=$request->$attend_status;
+           $attend->save();
 
-        $employee_leave=new EmployeeLeave();
-        $employee_leave->employee_id=$request->employee_id;
-        $employee_leave->start_date=(date('Y-m-d',strtotime($request->start_date)));
-        $employee_leave->end_date=(date('Y-m-d',strtotime($request->end_date)));
-        $employee_leave->leave_purpose_id=$leave_purpose_id;
-        $employee_leave->save();
+       }
 
-
-        return redirect()->route('employees.leave.view')->with('success', 'Leave Insert successfull');
-    }
-
-    public function edit($id){
-        $data['editData']=EmployeeLeave::find($id);
-        $data['employees']=User::where('usertype','employee')->get();
-
-        $data['leave_purpose']=LeavePurpose::all();
-
-
-        return view('backend.employee.employee_leave.add-leave',$data);
-
-
-
-
-    }
-
-
-    public function update(Request $request,$id){
-
-        if($request->leave_purpose_id=="0"){
-            $leavepurpose= new LeavePurpose();
-            $leavepurpose->name=$request->name;
-            $leavepurpose->save();
-            $leave_purpose_id=$leavepurpose->id;
-        }else{
-            $leave_purpose_id=$request->leave_purpose_id;
-        }
-
-        $employee_leave= EmployeeLeave::find($id);
-        $employee_leave->employee_id=$request->employee_id;
-        $employee_leave->start_date=(date('Y-m-d',strtotime($request->start_date)));
-        $employee_leave->end_date=(date('Y-m-d',strtotime($request->end_date)));
-        $employee_leave->leave_purpose_id=$leave_purpose_id;
-        $employee_leave->save();
-
-
-        return redirect()->route('employees.leave.view')->with('success', 'Leave Update successfull');
+        return redirect()->route('employees.attendence.view')->with('success', 'Data insert successfull');
 
 
     }
