@@ -230,8 +230,12 @@
                         </a>
                     </li>
 
-
-
+                    <li class="nav-item">
+                        <a href="{{route('employees.leave.view')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Employee Leave</p>
+                        </a>
+                    </li>
 
 
 
