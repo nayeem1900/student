@@ -227,4 +227,16 @@ Route::group(['prefix'=>'students','middleware' => 'auth'], function(){
 
 });
 
+    //Employee Attendence
+
+    Route::group(['prefix'=>'employees','middleware' => 'auth'], function() {
+
+        Route::get('/attend/view', 'Backend\Employee\EmployeeAttendController@view')->name('employees.attendence.view');
+        Route::get('/attend/add', 'Backend\Employee\EmployeeAttendController@add')->name('employees.attendence.add');
+        Route::post('/attend/store', 'Backend\Employee\EmployeeAttendController@store')->name('employees.attendence.store');
+        Route::get('/attend/edit/{id}', 'Backend\Employee\EmployeeAttendController@edit')->name('employees.attendence.edit');
+        Route::post('/attend/update/{id}', 'Backend\Employee\EmployeeAttendController@update')->name('employees.attendence.update');
+
+    });
+
 });
