@@ -236,6 +236,7 @@ Route::group(['prefix'=>'students','middleware' => 'auth'], function(){
         Route::post('/attend/store', 'Backend\Employee\EmployeeAttendController@store')->name('employees.attendence.store');
         Route::get('/attend/edit/{date}', 'Backend\Employee\EmployeeAttendController@edit')->name('employees.attendence.edit');
         Route::post('/attend/update/{id}', 'Backend\Employee\EmployeeAttendController@update')->name('employees.attendence.update');
+        Route::get('/attend/details/{date}', 'Backend\Employee\EmployeeAttendController@details')->name('employees.attendence.details');
 
     });
 

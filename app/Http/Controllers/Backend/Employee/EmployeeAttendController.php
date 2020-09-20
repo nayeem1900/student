@@ -47,6 +47,8 @@ class EmployeeAttendController extends Controller
 
     public function store(Request $request){
 
+        EmployeeAttendence::where('date',date('Y-m-d',strtotime($request->date)))->delete();
+
        $countemployee=count($request->employee_id);
        for($i=0; $i<$countemployee;$i++){
            $attend_status='attend_status'.$i;
@@ -79,12 +81,13 @@ class EmployeeAttendController extends Controller
 
 
 
-    public function details($id)
+    public function details($date)
     {
-        $data ['details']=User::find($id);
-        $pdf = PDF::loadView('backend/employee/employee_reg/employee-details-pdf', $data);
-        $pdf->SetProtection(['copy', 'print'], '', 'pass');
-        return $pdf->stream('document.pdf');
+        $data['details']=EmployeeAttendence::where('date',$date)->get();
+
+
+        return view('backend.employee.employee_attend.details-attendence',$data);
+
     }
 
 

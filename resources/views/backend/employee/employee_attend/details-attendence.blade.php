@@ -35,9 +35,9 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h3>Employee Leave List
+                                <h3>Employee Attendence Details
 
-                                    <a class="btn btn-success float-right btn-sm" href="{{route('employees.attendence.add')}}"><i class="fa fa-plus-circle"></i> Add Employee Attendence</a>
+                                    <a class="btn btn-success float-right btn-sm" href="{{route('employees.attendence.view')}}"><i class="fa fa-list"></i>Employee Attendence List</a>
                                 </h3>
 
                             </div><!-- /.card-header -->
@@ -48,36 +48,26 @@
                                     <thead>
                                     <tr>
                                         <th>SL</th>
+                                        <th>ID NO</th>
+                                        <th>Name</th>
                                         <th>Date</th>
+                                        <th>Attend Status</th>
 
-                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($allData as $key=>$value)
+                                    @foreach($details as $key=>$value)
                                         <tr>
                                             <td>{{$key+1}}</td>
-
+                                            <td>{{$value['user']['id_no']}}</td>
+                                            <td>{{$value['user']['name']}}</td>
                                             <td>{{date('d-m-yy',strtotime($value->date))}}</td>
-
-                                            <td>
-                                                <a title="Edit" class="btn btn-sm btn-primary" href="{{route('employees.attendence.edit',$value->date)}}"><i class="fa fa-edit"></i></a>
-                                                <a title="Details" class="btn btn-sm btn-success" href="{{route('employees.attendence.details',$value->date)}}"><i class="fa fa-eye"></i></a>
-
-
-
-                                            </td>
+                                            <td>{{$value->attend_status}}</td>
                                         </tr>
-
-
-                                    @endforeach
-
-
+                                        @endforeach
                                     </tbody>
-
-
-
                                 </table>
+
 
                             </div><!-- /.card-body -->
                         </div>
