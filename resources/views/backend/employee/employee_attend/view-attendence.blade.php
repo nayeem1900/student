@@ -43,15 +43,13 @@
                             </div><!-- /.card-header -->
                             <div class="card-body">
 
-                                <table id="example1" class="table table-bordered table-hover">
+                                <table id="example1" class="table table-bordered table-striped">
 
                                     <thead>
                                     <tr>
                                         <th>SL</th>
-                                        <th>Id No</th>
-                                        <th>Name</th>
                                         <th>Date</th>
-                                        <th>Attend Status</th>
+
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -59,21 +57,17 @@
                                     @foreach($allData as $key=>$value)
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                            <td>{{$value['user']['id_no']}}</td>
-                                            <td>{{$value['user']['name']}}</td>
+
                                             <td>{{date('d-m-yy',strtotime($value->date))}}</td>
-                                            <td>{{$value->attend_status}}</td>
-
-
 
                                             <td>
-                                                <a title="Edit" class="btn btn-sm btn-primary" href="{{route('employees.attendence.edit',$value->id)}}"><i class="fa fa-edit"></i></a>
-
+                                                <a title="Edit" class="btn btn-sm btn-primary" href="{{route('employees.attendence.edit',$value->date)}}"><i class="fa fa-edit"></i></a>
 
 
                                             </td>
-
                                         </tr>
+
+
                                     @endforeach
 
 

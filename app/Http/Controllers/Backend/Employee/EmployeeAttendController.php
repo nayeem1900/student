@@ -25,7 +25,7 @@ class EmployeeAttendController extends Controller
 
 
 
-        $data['allData']=EmployeeAttendence::orderBy('id','desc')->get();
+        $data['allData']=EmployeeAttendence::select('date')->groupBy('date')->orderBy('id','desc')->get();
 
 
         return view ('backend.employee.employee_attend.view-attendence', $data);
@@ -62,6 +62,20 @@ class EmployeeAttendController extends Controller
 
 
     }
+
+    public function edit($date){
+        $data['editData']=EmployeeAttendence::where('date',$date)->get();
+        $data['employees']=User::where('usertype','employee')->get();
+
+        $data['leave_purpose']=LeavePurpose::all();
+
+
+        return view('backend.employee.employee_attend.add-attendence',$data);
+
+
+
+    }
+
 
 
 
