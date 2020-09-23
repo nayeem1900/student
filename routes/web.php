@@ -240,4 +240,13 @@ Route::group(['prefix'=>'students','middleware' => 'auth'], function(){
 
     });
 
+    //Employee Monthly Salary
+
+    Route::group(['prefix'=>'employees','middleware' => 'auth'], function(){
+
+        Route::get('/monthly/salary/view', 'Backend\Employee\MonthlySalaryController@view')->name('employees.monthly.salary.view');
+        Route::get('/monthly/salary/get', 'Backend\Employee\MonthlySalaryController@getSalary')->name('employees.monthly.salary.get');
+        Route::get('/monthly/salary/payslip/{employee_id}', 'Backend\Employee\MonthlySalaryController@payslip')->name('employees.monthly.salary.payslip');
+    });
+
 });

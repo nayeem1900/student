@@ -145,15 +145,19 @@
             var year_id=$('#year_id').val();
             var class_id=$('#class_id').val();
             var month=$('#month').val();
-            /* $('.notifyjs-corner').html('');
+             $('.notifyjs-corner').html('');
              if(year_id==''){
-             $.notify("Year required",{globalPosition:'top-right',className:'error'});
+             $.notify("Year required",{globalPosition:'top right',className:'error'});
              return false;
              }
              if(class_id=='') {
-             $.notify("Class required", {globalPosition: 'top-right', className: 'error'});
+             $.notify("Class required", {globalPosition: 'top right', className: 'error'});
              return false;
-             }*/
+             }
+            if(month=='') {
+                $.notify("Month required", {globalPosition: 'top right', className: 'error'});
+                return false;
+            }
 
 
             $.ajax({

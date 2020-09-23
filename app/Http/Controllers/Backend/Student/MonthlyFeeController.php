@@ -94,7 +94,6 @@ class MonthlyFeeController extends Controller
         $pdf->SetProtection(['copy', 'print'], '', 'pass');
         return $pdf->stream('document.pdf');
 
-
     }
 
 

@@ -182,7 +182,7 @@ $(function(){
 <!-- jQuery -->
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"></script>
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"></script>--}}
 
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('public/backend/admin_panel/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
@@ -233,6 +233,8 @@ $(function(){
 <script src="{{asset('backend/admin_panel/plugins/jquery-validation/additional-methods.min.js')}}"></script>
 {{-- handlebars--}}
 <script src="{{asset('backend/js/handlebars.min-v4.7.6.js')}}"></script>
+{{-- Notyfy JS--}}
+<script src="{{asset('backend/js/notify.min.js')}}"></script>
 
 
 
