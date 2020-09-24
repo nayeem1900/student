@@ -7,12 +7,10 @@
 
 
     <style type="text/css">
-
         table{
             border-collapse:collapse;
         }
         h2 h3{
-
             margin:0;
             padding:0;
         }
@@ -32,7 +30,6 @@
             border-bottom: 2px solid#dee2e6;
         }
         .table tbody+tbody{
-
             border-top:2px solid#dee2e6;
         }
         .table table{
@@ -42,7 +39,6 @@
         .table-bordered td {
             border:1px solid#dee2e6;
         }
-
         .table-bordered thead th,
         .table-bordered thead td{
             border-bottom-width: 2px;
@@ -58,12 +54,10 @@
         }
         .table-bordered thead th, .table-bordered td , .table-bordered th{
             border: 1px; solid: black !important;
-
         }
         .table-bordered thead th{
             background-color: #cacaca;
         }
-
     </style>
 </head>
 <body>
@@ -79,92 +73,92 @@
 {{--jj--}}
 
 <div class="container">
-<div class="row">
+    <div class="row">
 
 
-    <div class="col-md-12 text-center">
-        <h5 style="font-weight: bold;padding-top: -25px;">Employee Details Information</h5>
+        <div class="col-md-12 text-center">
+            <h5 style="font-weight: bold;padding-top: -25px;">Employee Details Information</h5>
 
-    </div>
+        </div>
+        <div class="col-md-12">
+            <table border="1" width="100%">
+                <tbody>
+                <tr>
+                    <td style="width: 50%">Employee Name</td>
+                    <td>{{$details->name}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Father's Name</td>
+                    <td>{{$details->fname}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Mothers's Name</td>
+                    <td>{{$details->mname}}</td>
+                </tr>
+
+                <tr>
+                    <td style="width: 50%">Mobile</td>
+                    <td>{{$details->mobile}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Address</td>
+                    <td>{{$details->address}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Address</td>
+                    <td>{{$details->id_no}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Gender</td>
+                    <td>{{$details->gender}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Religion</td>
+                    <td>{{$details->religion}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Date of Birth</td>
+                    <td>{{$details->dob}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Designation</td>
+                    <td>{{$details['designation']['name']}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">Join Date</td>
+                    <td>{{$details->join_date}}</td>
+                </tr>
+
+                <tr>
+                    <td style="width: 50%">Salary</td>
+                    <td>{{$details->salary}}</td>
+                </tr>
+
+                </tbody>
+
+            </table>
+
+
+
+            <i style="font-size: 10px;float: right;">Print Date:{{date("d m y")}}</i>
+        </div>
+    </div><br/>
     <div class="col-md-12">
-        <table border="1" width="100%">
+        <table border="0" width="100%">
             <tbody>
             <tr>
-                <td style="width: 50%">Employee Name</td>
-                <td>{{$details->name}}</td>
-            </tr>
-            <tr>
-                <td style="width: 50%">Father's Name</td>
-                <td>{{$details->fname}}</td>
-            </tr>
-            <tr>
-                <td style="width: 50%">Mothers's Name</td>
-                <td>{{$details->mname}}</td>
-            </tr>
 
-            <tr>
-                <td style="width: 50%">Mobile</td>
-                <td>{{$details->mobile}}</td>
+                <td style="width: 30%"></td>
+                <td style="width: 30%"></td>
+                <td style="width: 40%; text-align: center;">
+                    <hr style="border:solid 1px;width: 60%;color: #000;margin-bottom: 0px;">
+                    <p style="text-align: center;">Principal/Head Master</p>
+                </td>
             </tr>
-            <tr>
-                <td style="width: 50%">Address</td>
-                <td>{{$details->address}}</td>
-            </tr>
-            <tr>
-                <td style="width: 50%">Address</td>
-                <td>{{$details->id_no}}</td>
-            </tr>
-            <tr>
-                <td style="width: 50%">Gender</td>
-                <td>{{$details->gender}}</td>
-            </tr>
-            <tr>
-                <td style="width: 50%">Religion</td>
-                <td>{{$details->religion}}</td>
-            </tr>
-            <tr>
-                <td style="width: 50%">Date of Birth</td>
-                <td>{{$details->dob}}</td>
-            </tr>
-            <tr>
-                <td style="width: 50%">Designation</td>
-                <td>{{$details['designation']['name']}}</td>
-            </tr>
-            <tr>
-                <td style="width: 50%">Join Date</td>
-                <td>{{$details->join_date}}</td>
-            </tr>
-
-            <tr>
-                <td style="width: 50%">Salary</td>
-                <td>{{$details->salary}}</td>
-            </tr>
-
             </tbody>
 
         </table>
-
-
-
-        <i style="font-size: 10px;float: right;">Print Date:{{date("d m y")}}</i>
     </div>
-</div><br/>
-<div class="col-md-12">
-    <table border="0" width="100%">
-        <tbody>
-        <tr>
-
-            <td style="width: 30%"></td>
-            <td style="width: 30%"></td>
-            <td style="width: 40%; text-align: center;">
-                <hr style="border:solid 1px;width: 60%;color: #000;margin-bottom: 0px;">
-                <p style="text-align: center;">Principal/Head Master</p>
-            </td>
-        </tr>
-        </tbody>
-
-    </table>
-</div>
 </div>
 </body>
 </html>

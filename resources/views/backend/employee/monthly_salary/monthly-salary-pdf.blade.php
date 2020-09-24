@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SMonthly Salary</title>
+    <title>Monthly Salary</title>
 
 
 
@@ -79,9 +79,8 @@
            }
 
 
-
-           $totalattend = App\Model\EmployeeAttendence::with (['user'])->where($where)->where('employee_id',$totalattendgroupbyid[0]->employee_id)->get();
-           $singleSalary=(float)$totalattendgroupbyid['0']['user']['salary'];
+       $totalattend = App\Model\EmployeeAttendence::with (['user'])->where($where)->where('employee_id',$totalattendgroupbyid['0']->employee_id)->get();
+           $singleSalary=(float)$totalattendgroupbyid(['0','user','salary']);
            $salaryperday=(float)$singleSalary/30;
            $absentcount=count($totalattend->where('attend_status','absent'));
             $totalsalaryminus=(float)$absentcount*(float)$salaryperday;
@@ -105,8 +104,8 @@
                         <h4><strong>ibf-bd.org</strong></h4>
                     </td>
 
-                    <td  class="text-center"><img src="{{(!empty($totalattendgroupbyid['0']['user']['image']))?url('upload/employee_images/'
-                    .$totalattendgroupbyid['0']['user']['image']):url('upload/no_img.png')}}" style="width:70px;height: 70px ">
+                    <td  class="text-center"><img src="{{(!empty($totalattendgroupbyid(['0','user','image'])))?url('upload/employee_images/'
+                    .$totalattendgroupbyid(['0','user','image'])):url('upload/no_img.png')}}" style="width:70px;height: 70px ">
                     </td>
                 </tr>
 
@@ -122,11 +121,11 @@
                 <tbody>
                 <tr>
                     <td style="width: 50%">Employee Name</td>
-                    <td>{{$totalattendgroupbyid['0']['user']['name']}}</td>
+                    <td>{{$totalattendgroupbyid(['0','user','name'])}}</td>
                 </tr>
                 <tr>
                     <td style="width: 50%">Basic Salary</td>
-                    <td>{{$totalattendgroupbyid['0']['user']['salary']}}</td>
+                    <td>{{$totalattendgroupbyid(['0','user','salary'])}}</td>
                 </tr>
                 <tr>
                     <td style="width: 50%">Total Absent for this Month</td>

@@ -249,4 +249,20 @@ Route::group(['prefix'=>'students','middleware' => 'auth'], function(){
         Route::get('/monthly/salary/payslip/{employee_id}', 'Backend\Employee\MonthlySalaryController@payslip')->name('employees.monthly.salary.payslip');
     });
 
+
+
+
 });
+
+//Student Marks
+
+Route::group(['prefix'=>'marks','middleware' => 'auth'], function(){
+
+Route::get('/add', 'Backend\Marks\MarksController@add')->name('marks.add');
+
+});
+
+
+Route::get('/get-student', 'Backend\DefaultController@getStudent')->name('get-student');
+Route::get('/get-subject', 'Backend\DefaultController@getSubject')->name('get-subject');
+
