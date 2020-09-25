@@ -42,7 +42,7 @@
 
                             <div class="card-body">
 
-                                <form method="post" action="{{route('students.roll.store')}}" id="myForm">
+                                <form method="post" action="{{route('marks.store')}}" id="myForm">
                                     @csrf
                                     <div class="form-row">
 
@@ -77,7 +77,20 @@
                                                 <option value="">Select Subject</option>
                                             </select>
                                         </div>
-                                        <div class="form-group col-md-4" style="padding-top:29px;">
+                                        <div class="col-md-3">
+                                            <label>Exam Type </label>
+                                            <select name="exam_type_id" id="exam_type_id" class="form-control form-control-sm">
+                                                <option value="">Select Exam Type</option>
+                                                @foreach($exam_types as $type)
+                                                    <option value="{{$type->id}}">{{$type->name}} </option>
+
+                                                    @endforeach
+
+
+                                            </select>
+
+                                        </div>
+                                        <div class="form-group col-md-3" style="padding-top:29px;">
 
                                             <a id="search"class="btn btn-primary btn-sm" name="search">Search</a>
                                         </div>
@@ -132,6 +145,7 @@
             var year_id=$('#year_id').val();
             var class_id=$('#class_id').val();
             var assign_subject_id=$('#assign_subject_id').val();
+            var exam_type_id=$('#exam_type_id').val();
              $('.notifyjs-corner').html('');
              if(year_id==''){
              $.notify("Year required",{globalPosition:'top-right',className:'error'});
@@ -145,6 +159,10 @@
                 $.notify("Subject required", {globalPosition: 'top-right', className: 'error'});
                 return false;
             }
+            if(exam_type_id=='') {
+                $.notify("Exam Type required", {globalPosition: 'top-right', className: 'error'});
+                return false;
+            }
             $.ajax({
                 url:"{{route('get-student')}}",
                 type:"GET",
@@ -155,15 +173,15 @@
                     $.each(data,function (key,v) {
                         html+=
                             '<tr>'+
-                            '<td>'+ v.student.id_no+'<input type="hidden" name="student_id[]"value=" '+v.student_id+' "> </td>'+
+                            '<td>'+ v.student.id_no+'<input type="hidden" name="student_id[]"value=" '+v.student_id+' "> <input type="hidden" name="id_no[]"value=" '+v.student.id_no+' "></td>'+
                             '<td>'+ v.student.name+ '</td>'+
                             '<td>'+ v.student.fname+ '</td>'+
-                            '<td><input type="text" class="form-control form-control-sm" name="roll[]"value=" '+v.roll+' "> </td>'+
-                            '<tr>';
+                            '<td><input type="text" class="form-control form-control-sm" name="marks[]"> </td>'+
+                            '</tr>';
 
                     });
 
-                    html=$('#roll-generate-tr').html(html);
+                    html=$('#marks-entry-tr').html(html);
                 }
             });
 
@@ -207,8 +225,8 @@ $(function () {
             $('#myForm').validate({
                 rules: {
 
-                    "roll": {
-                        required: true,
+                    "marks[]": {
+                        required: true
 
                     }
                 },

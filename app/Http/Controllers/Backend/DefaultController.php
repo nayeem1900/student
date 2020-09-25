@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Model\AssignSubject;
 use Illuminate\Http\Request;
+use App\Model\AssignSubject;
 use App\Model\AssignStudent;
 use App\Model\DiscountStudent;
 use App\Model\StudentClass;
@@ -18,7 +18,10 @@ class DefaultController extends Controller
 {
    public function getStudent(Request $request){
 
-       dd('ol');
+       $year_id=$request->year_id;
+       $class_id=$request->class_id;
+       $allData=AssignStudent::with(['student'])->where('year_id',$year_id)->where('class_id',$class_id)->get();
+       return response()->json($allData);
 
    }
 

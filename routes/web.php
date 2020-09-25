@@ -259,6 +259,7 @@ Route::group(['prefix'=>'students','middleware' => 'auth'], function(){
 Route::group(['prefix'=>'marks','middleware' => 'auth'], function(){
 
 Route::get('/add', 'Backend\Marks\MarksController@add')->name('marks.add');
+    Route::post('/marks', 'Backend\Marks\MarksController@store')->name('marks.store');
 
 });
 
