@@ -7,6 +7,9 @@ use App\Model\AssignSubject;
 use App\Model\Subject;
 use Illuminate\Http\Request;
 use App\Model\StudentClass;
+use Illuminate\Support\Facades\Auth;
+use Mpdf\Tag\A;
+use App\User;
 
 class AssignSubjectController extends Controller
 {
@@ -68,19 +71,25 @@ class AssignSubjectController extends Controller
             return redirect()->back()->with('error', 'sorry you dont select any Item');
         }else{
 
-            AssignSubject::where('class_id',$class_id)->delete();
-            $countSubject=count($request->subject_id);
+           AssignSubject::WhereNotIn('subject_id',$request->subject_id)->where('class_id',$request->class_id)->delete();
+           foreach ($request->subject_id as $key=>$value){
 
-            for($i=0; $i < $countSubject ; $i++){
-                $assign_sub=new AssignSubject();
-                $assign_sub->class_id=$request->class_id;
-                $assign_sub->subject_id=$request->subject_id[$i];
-                $assign_sub->full_mark=$request->full_mark[$i];
-                $assign_sub->pass_mark=$request->pass_mark[$i];
-                $assign_sub->subjective_mark=$request->subjective_mark[$i];
-                $assign_sub->save();
-
+               $assign_subject_exist=AssignSubject::where('subject_id',$request->subject_id[$key])->where('class_id',$request->class_id)->first();
+            if($assign_subject_exist){
+                $assignsubject=$assign_subject_exist;
+            }else{
+                $assignsubject= New AssignSubject();
             }
+            $assignsubject->class_id=$request->class_id;
+               $assignsubject->subject_id=$request->subject_id[$key];
+               $assignsubject->full_mark=$request->full_mark[$key];
+               $assignsubject->pass_mark=$request->pass_mark[$key];
+               $assignsubject->subjective_mark=$request->subjective_mark[$key];
+
+               $assignsubject->save();
+
+
+           }
         }
 
         session()->flash('success',' class update success');

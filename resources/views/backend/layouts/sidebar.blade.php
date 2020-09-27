@@ -272,6 +272,12 @@
                             <p>Marks Entry</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('marks.edit')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Marks Edit</p>
+                        </a>
+                    </li>
 
 
 
