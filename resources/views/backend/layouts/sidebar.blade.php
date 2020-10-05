@@ -278,6 +278,12 @@
                             <p>Marks Edit</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('marks.grade.view')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Grade Point</p>
+                        </a>
+                    </li>
 
 
 

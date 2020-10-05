@@ -258,12 +258,19 @@ Route::group(['prefix'=>'students','middleware' => 'auth'], function(){
 
 Route::group(['prefix'=>'marks','middleware' => 'auth'], function(){
 
-Route::get('/add', 'Backend\Marks\MarksController@add')->name('marks.add');
+    Route::get('/add', 'Backend\Marks\MarksController@add')->name('marks.add');
     Route::post('/store', 'Backend\Marks\MarksController@store')->name('marks.store');
     Route::get('/edit', 'Backend\Marks\MarksController@edit')->name('marks.edit');
     Route::get('/get-student-marks', 'Backend\Marks\MarksController@getMarks')->name('get-student-marks');
     Route::post('/update', 'Backend\Marks\MarksController@update')->name('marks.update');
 
+
+    //Grade Point
+    Route::get('/grade/view', 'Backend\Marks\GradeController@view')->name('marks.grade.view');
+    Route::get('/grade/add', 'Backend\Marks\GradeController@add')->name('marks.grade.add');
+    Route::post('/grade/store', 'Backend\Marks\GradeController@store')->name('marks.grade.store');
+    Route::get('/grade/edit/{id}', 'Backend\Marks\GradeController@edit')->name('marks.grade.edit');
+    Route::post('/grade/update/{id}', 'Backend\Marks\GradeController@update')->name('marks.grade.update');
 });
 
 
