@@ -29,7 +29,7 @@ class MonthlySalaryController extends Controller
 
     public function getSalary(Request $request){
 
-        $date = date('Y-m-d',strtotime($request->date));
+        $date = date('Y-m',strtotime($request->date));
 
         if ($date != '') {
             $where[] = ['date','like', $date.'%'];
@@ -68,7 +68,7 @@ class MonthlySalaryController extends Controller
 
     public function payslip(Request $request,$employee_id){
 
-        $id=EmployeeAttendence::where('employee_id',$employee_id)->first();
+        $id = EmployeeAttendence::where('employee_id',$employee_id)->first();
        $date=date('Y-m',strtotime($id->date));
        if($date!=''){
            $where[] = ['date','like', $date.'%'];

@@ -80,7 +80,7 @@
 
 
        $totalattend = App\Model\EmployeeAttendence::with (['user'])->where($where)->where('employee_id',$totalattendgroupbyid['0']->employee_id)->get();
-           $singleSalary=(float)$totalattendgroupbyid(['0','user','salary']);
+           $singleSalary=(float)$totalattendgroupbyid['0']['user']['salary'];
            $salaryperday=(float)$singleSalary/30;
            $absentcount=count($totalattend->where('attend_status','absent'));
             $totalsalaryminus=(float)$absentcount*(float)$salaryperday;
@@ -89,28 +89,9 @@
     @endphp
 
     <div class="row">
+       
 
-        <div class="col-md-12">
 
-            <table width="80%">
-
-                <tr>
-
-                    <td width="33%" class="text-center">
-                        <img src="{{url('upload/images/abc_school.png)}}" style="width:70px;height:70px "></td>
-                    <td class="text-center" width="63%">
-                        <h4><strong>Abc School</strong></h4>
-                        <h4><strong>Dhaka,SanirAkra</strong></h4>
-                        <h4><strong>ibf-bd.org</strong></h4>
-                    </td>
-
-                    <td  class="text-center"><img src="{{(!empty($totalattendgroupbyid(['0','user','image'])))?url('upload/employee_images/'
-                    .$totalattendgroupbyid(['0','user','image'])):url('upload/no_img.png')}}" style="width:70px;height: 70px ">
-                    </td>
-                </tr>
-
-            </table>
-        </div>
         <div class="col-md-12 text-center">
             <h5 style="font-weight: bold;padding-top: -25px;">Employee Monthly Salary</h5>
         </div>
@@ -121,11 +102,11 @@
                 <tbody>
                 <tr>
                     <td style="width: 50%">Employee Name</td>
-                    <td>{{$totalattendgroupbyid(['0','user','name'])}}</td>
+                    <td>{{$totalattendgroupbyid['0']['user']['name']}}</td>
                 </tr>
                 <tr>
                     <td style="width: 50%">Basic Salary</td>
-                    <td>{{$totalattendgroupbyid(['0','user','salary'])}}</td>
+                    <td>{{$totalattendgroupbyid['0']['user']['salary']}}</td>
                 </tr>
                 <tr>
                     <td style="width: 50%">Total Absent for this Month</td>
@@ -133,7 +114,7 @@
                 </tr>
                 <tr>
                     <td style="width: 50%">Month</td>
-                    <td>{{date('M-Y',strtotime($totalattendgroupbyid['0']->date))}}</td>
+                    <td>{{date('M Y',strtotime($totalattendgroupbyid['0']->date))}}</td>
                 </tr>
                 <tr>
                     <td style="width: 50%">Salary For This Month</td>
