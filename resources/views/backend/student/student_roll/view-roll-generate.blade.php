@@ -124,7 +124,7 @@
 
             var year_id=$('#year_id').val();
             var class_id=$('#class_id').val();
-           /* $('.notifyjs-corner').html('');
+            $('.notifyjs-corner').html('');
             if(year_id==''){
                 $.notify("Year required",{globalPosition:'top-right',className:'error'});
                 return false;
@@ -132,7 +132,7 @@
             if(class_id=='') {
                 $.notify("Class required", {globalPosition: 'top-right', className: 'error'});
                 return false;
-            }*/
+            }
             $.ajax({
             url:"{{route('students.roll.get-student')}}",
                 type:"GET",

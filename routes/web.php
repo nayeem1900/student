@@ -281,8 +281,8 @@ Route::group(['prefix'=>'accounts','middleware' => 'auth'], function(){
 
     Route::get('/student/fee/view', 'Backend\Account\StudentFeeController@view')->name('accounts.fee.view');
     Route::get('/student/fee/add', 'Backend\Account\StudentFeeController@add')->name('accounts.fee.add');
-    Route::post('/student/fee/store', 'Backend\Account\StudentFeeController@add')->name('accounts.fee.store');
-    Route::get('/student/getstudent', 'Backend\Account\StudentFeeController@add')->name('accounts.fee.getstudent');
+    Route::post('/student/fee/store', 'Backend\Account\StudentFeeController@store')->name('accounts.fee.store');
+    Route::get('/student/getstudent', 'Backend\Account\StudentFeeController@getstudent')->name('accounts.fee.getstudent');
 
 
 
