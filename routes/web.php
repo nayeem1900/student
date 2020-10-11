@@ -278,12 +278,16 @@ Route::get('/get-student', 'Backend\DefaultController@getStudent')->name('get-st
 Route::get('/get-subject', 'Backend\DefaultController@getSubject')->name('get-subject');
 
 Route::group(['prefix'=>'accounts','middleware' => 'auth'], function(){
-
+//Student Fee
     Route::get('/student/fee/view', 'Backend\Account\StudentFeeController@view')->name('accounts.fee.view');
     Route::get('/student/fee/add', 'Backend\Account\StudentFeeController@add')->name('accounts.fee.add');
     Route::post('/student/fee/store', 'Backend\Account\StudentFeeController@store')->name('accounts.fee.store');
     Route::get('/student/getstudent', 'Backend\Account\StudentFeeController@getstudent')->name('accounts.fee.getstudent');
 
-
+//Employee Salary
+    Route::get('/employee/salary/view', 'Backend\Account\SalaryController@view')->name('accounts.salary.view');
+    Route::get('/employee/salary/add', 'Backend\Account\SalaryController@add')->name('accounts.salary.add');
+    Route::post('/employee/salary/store', 'Backend\Account\SalaryController@store')->name('accounts.salary.store');
+    Route::get('/employee/getemployee', 'Backend\Account\SalaryController@getemployee')->name('accounts.salary.getemployee');
 
 });
