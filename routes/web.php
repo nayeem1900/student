@@ -290,4 +290,22 @@ Route::group(['prefix'=>'accounts','middleware' => 'auth'], function(){
     Route::post('/employee/salary/store', 'Backend\Account\SalaryController@store')->name('accounts.salary.store');
     Route::get('/employee/getemployee', 'Backend\Account\SalaryController@getemployee')->name('accounts.salary.getemployee');
 
+    //Other Cost
+    Route::get('/cost/view', 'Backend\Account\OtherCostController@view')->name('accounts.cost.view');
+    Route::get('/cost/add', 'Backend\Account\OtherCostController@add')->name('accounts.cost.add');
+    Route::post('/cost/store', 'Backend\Account\OtherCostController@store')->name('accounts.cost.store');
+    Route::get('/cost/edit/{id}', 'Backend\Account\OtherCostController@edit')->name('accounts.cost.edit');
+    Route::post('/cost/update/{id}', 'Backend\Account\OtherCostController@update')->name('accounts.cost.update');
+
+
+});
+
+Route::group(['prefix'=>'reports','middleware' => 'auth'], function(){
+//Monthly Profit
+    Route::get('/profit/view', 'Backend\Report\ProfitController@view')->name('reports.profit.view');
+    Route::get('/profit/get', 'Backend\Report\ProfitController@profit')->name('reports.profit.datewise.get');
+    Route::get('/profit/pdf', 'Backend\Report\ProfitController@pdf')->name('reports.profit.pdf');
+
+
+
 });
