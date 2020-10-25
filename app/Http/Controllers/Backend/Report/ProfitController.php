@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Model\AccountEmployeeSalary;
 use App\Model\AccountOtherCost;
 use App\Model\AccountStudentFee;
+use App\Model\EmployeeAttendence;
 use App\Model\ExamType;
 use App\Model\MarksGrade;
 use App\Model\StudentClass;
 use App\Model\StudentMarks;
 use App\Model\Year;
+use App\User;
 use Illuminate\Http\Request;
 use PDF;
 class ProfitController extends Controller
@@ -110,5 +112,45 @@ return view('backend.report.pdf.marksheet-pdf',compact('allMarks','allGrades','c
 
 
     }
+
+    public function attendenceview(){
+        $data['employees']=User::where('usertype','employee')->get();
+
+        return view('backend.report.attendence-view',$data);
+
+    }
+    public function attendenceget(Request $request)
+    {
+
+        $employee_id = $request->employee_id;
+        if ($employee_id != '') {
+            $where[] = ['employee_id', $employee_id];
+
+
+        }
+        $date = date('Y-m', strtotime($request->date));
+
+        if ($date != '') {
+            $where[] = ['date', 'like', $date . '%'];
+        }
+     $singleattendence=EmployeeAttendence::with(['user'])->where($where)->first();
+        if($singleattendence==true){
+            $data['allData']=EmployeeAttendence::with(['user'])->where($where)->get();
+$data['absents']=EmployeeAttendence::with(['user'])->where($where)->where('attend_status','absent')->get()->count();
+            $data['leaves']=EmployeeAttendence::with(['user'])->where($where)->where('attend_status','leave')->get()->count();
+            $data['month']=date('M Y',strtotime($request->date));
+            $pdf = PDF::loadView('backend.report.pdf.attendence-pdf', $data);
+            $pdf->SetProtection(['copy', 'print'], '', 'pass');
+            return $pdf->stream('document.pdf');
+        }else{
+            return redirect()->back()->with('error','Sorry There Criteria is not Match');
+
+        }
+
+
+    }
+
+
+
 
 }
