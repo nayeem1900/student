@@ -305,6 +305,10 @@ Route::group(['prefix'=>'reports','middleware' => 'auth'], function(){
     Route::get('/profit/view', 'Backend\Report\ProfitController@view')->name('reports.profit.view');
     Route::get('/profit/get', 'Backend\Report\ProfitController@profit')->name('reports.profit.datewise.get');
     Route::get('/profit/pdf', 'Backend\Report\ProfitController@pdf')->name('reports.profit.pdf');
+    //Marksheet Profit
+    Route::get('/marksheet/view', 'Backend\Report\ProfitController@marksheetview')->name('reports.marksheet.view');
+    Route::get('/marksheet/get', 'Backend\Report\ProfitController@marksheetget')->name('reports.marksheet.get');
+
 
 
 

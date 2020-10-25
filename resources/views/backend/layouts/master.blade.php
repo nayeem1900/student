@@ -132,7 +132,7 @@
     <!-- Content Wrapper. Contains page content -->
    @yield('content')
 
-{{--
+
 @if(session()->has('success'))
     <script type="text/javascript">
 
@@ -157,7 +157,7 @@ $(function(){
 
         </script>
 @endif
---}}
+
 
 
 
