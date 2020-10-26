@@ -49,12 +49,19 @@
         .text-center{
             text-align: center;
         }
-
+        .text-right{
+            text-align: right;
+        }
         table tr td{
             padding:5px;
         }
+        .table-bordered thead th, .table-bordered td , .table-bordered th{
+            border: 1px; solid: black !important;
 
-
+        }
+        .table-bordered thead th{
+            background-color: #cacaca;
+        }
 
     </style>
 </head>
@@ -71,34 +78,35 @@
 
 
 
+        <div class="col-md-12 text">
+            <table width="80%">
+                <tr>
+                    <td width="33%" class="text-center">
+                        <img src="{{url('upload/logoctg.png')}}" style="width: 70px;" height="80px;">
+                    </td>
+                    <td class="text-center" width="63%">
+                        <h4><strong>IBF</strong></h4>
+                    </td>
+                    <td class="text-center">
+                        <img src="{{(!empty($allData['0']['user']['image']))?url('upload/employee_images/' .$allData['0']['user']['image']):url('upload/no_img.png')}}"
+                        style="width: 70px;" height="70px;">
 
+                    </td>
+                </tr>
+            </table>
+
+        </div>
         <div class="col-md-12 text-center">
             <h5 style="font-weight: bold;padding-top: -25px;">Employee Attendence Report</h5>
         </div>
         <div class="col-md-12">
-            <strong>Employee Name:</strong>{{$allData['0']['user']['name']}}, <strong>ID NO:</strong>
-            {{$allData['0']['user']['name']}},<strong>Month:</strong>{{$month}}
             <table border="1" width="100%">
-                <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Attend Status</th>
-                </tr>
-                </thead>
                 <tbody>
-                @foreach($allData as $value)
                 <tr>
-                    <td width="50%">{{date('d-m-Y',strtotime($value->date))}}</td>
-                    <td width="50%">{{$value->attend_status}}</td>
-
+                    <td style="width: 50%">Employee Name</td>
+                    <td></td>
                 </tr>
-@endforeach
-                <tr>
 
-                    <td colspan="2">
-                        <strong>Total Absent:</strong>{{$absents}},<strong>Total Leave:</strong>{{$leaves}}
-                    </td>
-                </tr>
                 </tbody>
 
             </table><br/>

@@ -363,6 +363,12 @@
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a href="{{route('reports.result.view')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Student Result</p>
+                        </a>
+                    </li>
 
 
 
