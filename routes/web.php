@@ -316,6 +316,9 @@ Route::group(['prefix'=>'reports','middleware' => 'auth'], function(){
 //All Student Result
     Route::get('/result/view', 'Backend\Report\ProfitController@resultview')->name('reports.result.view');
     Route::get('/resulte/get', 'Backend\Report\ProfitController@resultget')->name('reports.result.get');
+//All Student ID Card
+    Route::get('/id-card/view', 'Backend\Report\ProfitController@idCardview')->name('reports.id-card.view');
+    Route::get('/id-card/get', 'Backend\Report\ProfitController@idCardget')->name('reports.id-card.get');
 
 
 });

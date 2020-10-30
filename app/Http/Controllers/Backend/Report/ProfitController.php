@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Model\AccountEmployeeSalary;
 use App\Model\AccountOtherCost;
 use App\Model\AccountStudentFee;
+use App\Model\AssignStudent;
 use App\Model\EmployeeAttendence;
 use App\Model\ExamType;
 use App\Model\MarksGrade;
@@ -76,7 +77,7 @@ class ProfitController extends Controller
 
 
     public function marksheetview(){
-        $data['years']=Year::orderBy('id','desc')->get();
+        $data['years']=Year::orderBy('id','asc')->get();
         $data['classes']=StudentClass::all();
         $data['exam_types']=ExamType::all();
 
@@ -190,6 +191,46 @@ public function resultget(Request $request){
 
 
 }
+
+
+public function idCardview(){
+    $data['years']=Year::orderBy('id','desc')->get();
+    $data['classes']=StudentClass::all();
+
+    return view('backend.report.id-card-view',$data);
+
+
+
+
+}
+
+    public function idCardget(Request $request){
+        $year_id=$request->year_id;
+        $class_id=$request->class_id;
+
+
+        $check_data=AssignStudent::where('year_id',$year_id)->where('class_id',$class_id)->first();
+
+
+        if($check_data==true){
+
+            $data['allData']=StudentMarks::select('year_id','class_id','exam_type_id','student_id')->where('year_id',$year_id)->
+            where('class_id',$class_id)->groupBy('year_id')->groupBy('class_id')->groupBy('exam_type_id')->
+            groupBy('student_id')->get();
+
+            $pdf = PDF::loadView('backend.report.pdf.idcard-pdf', $data);
+            $pdf->SetProtection(['copy', 'print'], '', 'pass');
+            return $pdf->stream('document.pdf');
+
+        }else{
+
+            return redirect()->back()->with('errors','The Criteria does not Match');
+
+        }
+
+
+
+    }
 
 
 

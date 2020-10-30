@@ -369,7 +369,12 @@
                             <p>Student Result</p>
                         </a>
                     </li>
-
+                    <li class="nav-item">
+                        <a href="{{route('reports.id-card.view')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Student ID Card</p>
+                        </a>
+                    </li>
 
 
 
